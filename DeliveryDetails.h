@@ -8,7 +8,7 @@ private :
 	std::string lead_time;
 	unsigned int delivery_fee;
 	unsigned int free_delivery_amount;
-	unsigned int exchanget_delivery_fee;
+	unsigned int exchange_delivery_fee;
 	unsigned int return_delivery_fee;
 public :
 	DeliveryDetails();
@@ -20,5 +20,5 @@ public :
 	// DetailsInterface
 	void init_details() override;
 	virtual void modify_details() override;
-	virtual void display_details() override;
+	virtual void display_details() const override;
 };

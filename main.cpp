@@ -1,6 +1,8 @@
 ﻿#include <iostream>
+#include "EleventhStreet.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	BuyerInterface* logined_buyer;
+	SellerInterface* logined_seller;
 }

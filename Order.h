@@ -23,10 +23,11 @@ private :
 	unsigned int order_id;
 	unsigned int product_id;
 	unsigned int buyer_id;
-	std::vector<OrderItem> order_item_list;	// DynamicArray 대체
+	std::vector<OrderItem> order_item_list;
 	Address buyer_address;
-	const int order_date;	// time 대체
-	int actual_arrival_date;	// time 대체
+	const unsigned int order_date;
+	const unsigned int estimate_order_date;
+	int actual_arrival_date;
 	unsigned int delivery_fee;
 	unsigned int total_product_price;
 	unsigned int total_discount_amount;
@@ -35,4 +36,28 @@ private :
 public :
 	Order();
 	~Order();
+
+	// Buyer- 
+	void add_order_item(const OrderItem& new_item) override;
+	void display_order_details() const override;
+	void display_order() const override;
+	void set_buyer_address(const Address& buyer_address) override;
+	void calculate_free_delivery_amount() override;
+	void set_delivery_price() override;
+	void set_total_price() override;
+	void set_total_product_price() override;
+	void set_total_discount_amount() override;
+	void request_order_refund() override;
+
+	// Seller- 
+	void set_status() = 0;
+	void set_actual_arrival_date() override;
+	void display_order() const override;
+	void process_order() override;
+	void process_refund() override;
+
+	// Search-
+	unsigned int get_order_id() const override;
+	unsigned int get_buyer_id() const override;
+	unsigned int get_product_id() const override;
 };

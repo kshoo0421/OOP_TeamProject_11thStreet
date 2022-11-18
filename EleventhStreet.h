@@ -1,12 +1,8 @@
 #pragma once
 #include <vector>
 // interfaces
-#include "SellerProductInterface.h"
-#include "SellerOrderInterface.h"
-#include "SellerInformationInterface.h"
-#include "BuyerProductInterface.h"
-#include "BuyerOrderListInterface.h"
-#include "BuyerInformationInterface.h"
+#include "SellerMallInterface.h"
+#include "BuyerMallInterface.h"
 // components
 #include "Seller.h"
 #include "Buyer.h"
@@ -16,9 +12,7 @@
 #include "Coupon.h"
 #include "User.h"
 
-class EleventhStreet : public SellerProductInterface, public SellerOrderInterface,
-	public SellerInformationInterface, public BuyerProductInterface,
-	public BuyerOrderListInterface, public BuyerInformationInterface
+class EleventhStreet : public SellerMallInterface, public BuyerMallInterface
 {
 private:
 	std::vector<Seller> seller_list;
@@ -27,49 +21,40 @@ private:
 	std::vector<Category> category_list;
 	std::vector<Order> order_list;
 	std::vector<Coupon> coupon_list;
-	User* current_user;
-	unsigned int  current_product_id;
-	int select_number;
 public:
-	void log_in();
-	void sign_in();
+	EleventhStreet();
+	~EleventhStreet();
+	Seller* seller_log_in();
+	Buyer* buyer_log_in();
+	void seller_sign_in();
+	void buyer_sign_in();
 
-	// SellerProductInterface
-	void display_product_details(const unsigned int& product_id) override;
-	void display_seller_products() override;
-	void modify_product_details() override;
-	void delete_product() override;
-	void add_product() override;
-	void category_selection() override;
-	void issue_coupon() override;
-	void display_coupons() override;
-	void delete_coupon() override;
+	// SellerMallInterface
+	void add_coupon() override;
+	void display_coupons(const unsigned int& product_id) const override;
+	void delete_coupon(const unsigned int& coupon_id) override;
+	void display_main_categories() const override;
+	void display_sub_categories() const override;
+	void add_new_product(const Product& new_product) const override;
+	void display_orders_by_seller_id(const unsigned int& seller_id) const override;
+	Order* get_order(const unsigned int& order_id) const override;
+	Product* get_product(const unsigned int& product_id) const override;
+	// SellerMallInterface-SellerInterface
+	void poster_product_list() override;
+	void requested_orders() override;
+	void my_information() override;
 
-	// SellerOrderInterface
-	void set_status() override;
-	void set_actual_order_date() override;
-	void display_order() override;
-
-	// SellerInformationInterface
-	void display_seller_account_information() override;
-	void modify_seller_account_information() override;
-
-	// BuyerProductInterface
-	void display_product_details(const unsigned int& product_id) override;
+	// BuyerMallInterface
 	void display_all_products() override;
-	void display_option_selection_page() override;
-	void display_coupon_available() override;
-	void apply_coupon() override;
-	void request_order(const Order& new_order) override;
-
-	// BuyerOrderListInterface
-	void display_buyer_order_list(const unsigned int& buyer_id) override;
-	void display_item_details(const unsigned int& order_id) override;
-	void request_order_refund(const unsigned int& order_id) override;
-	void request_refund(const unsigned int& order_id,
-		const unsigned int& item_index) override;
-
-	// BuyerInformationInterface
-	void display_buyer_account_information() override;
-	void modify_buyer_account_information() override;
+	void request_order(Order* new_order) override;
+	void display_coupons(const unsigned int& product_id) override;
+	Coupon get_coupon(const unsigned int& coupon_id) const override;
+	void add_new_order() const override;
+	void display_orders_by_buyer_id(const unsigned int& buyer_id) const override;
+	Product* get_product(const unsigned int& product_id) override;
+	Order* get_order(const unsigned int& order_id) override;
+	// BuyerMallInterface - BuyerInterface
+	void go_shopping() override;
+	void look_up_my_order_list() const override;
+	void my_information() const override;
 }

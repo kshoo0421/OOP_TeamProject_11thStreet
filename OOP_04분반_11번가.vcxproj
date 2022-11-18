@@ -139,20 +139,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BuyerInterface.h" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Address.h" />
     <ClInclude Include="Buyer.h" />
-    <ClInclude Include="BuyerInformationInterface.h" />
+    <ClInclude Include="BuyerMallInterface.h" />
     <ClInclude Include="BuyerOrderInterface.h" />
-    <ClInclude Include="BuyerOrderListInterface.h" />
     <ClInclude Include="BuyerProductInterface.h" />
     <ClInclude Include="Category.h" />
     <ClInclude Include="Coupon.h" />
     <ClInclude Include="DeliveryDetails.h" />
     <ClInclude Include="DetailsInterface.h" />
-    <ClInclude Include="DynamicArray.h" />
     <ClInclude Include="EleventhStreet.h" />
     <ClInclude Include="IndexList.h" />
     <ClInclude Include="Option.h" />
@@ -163,10 +162,10 @@
     <ClInclude Include="ProductDetails.h" />
     <ClInclude Include="ProductSearchInterface.h" />
     <ClInclude Include="SearchOrderInterface.h" />
-    <ClInclude Include="SellerInformationInterface.h" />
+    <ClInclude Include="SellerInterface.h" />
+    <ClInclude Include="SellerMallInterface.h" />
     <ClInclude Include="SellerOrderInterface.h" />
     <ClInclude Include="Seller.h" />
-    <ClInclude Include="SellerOrderListInterface.h" />
     <ClInclude Include="SellerProductInterface.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>

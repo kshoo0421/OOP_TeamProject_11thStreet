@@ -19,6 +19,5 @@ public :
 	// 인터페이스 내용
 	void init_details() override;
 	void modify_details() override;
-	void display_details() override;
-
+	void display_details() const override;
 };

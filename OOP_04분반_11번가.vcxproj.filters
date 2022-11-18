@@ -24,18 +24,15 @@
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="BuyerInterface.h">
+      <Filter>헤더 파일\Interface</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BuyerOrderInterface.h">
       <Filter>헤더 파일\Interface</Filter>
     </ClInclude>
     <ClInclude Include="BuyerProductInterface.h">
-      <Filter>헤더 파일\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="BuyerInformationInterface.h">
-      <Filter>헤더 파일\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="BuyerOrderListInterface.h">
       <Filter>헤더 파일\Interface</Filter>
     </ClInclude>
     <ClInclude Include="DetailsInterface.h">
@@ -68,9 +65,6 @@
     <ClInclude Include="DeliveryDetails.h">
       <Filter>헤더 파일\Class</Filter>
     </ClInclude>
-    <ClInclude Include="DynamicArray.h">
-      <Filter>헤더 파일\Class</Filter>
-    </ClInclude>
     <ClInclude Include="EleventhStreet.h">
       <Filter>헤더 파일\Class</Filter>
     </ClInclude>
@@ -101,10 +95,13 @@
     <ClInclude Include="User.h">
       <Filter>헤더 파일\Class</Filter>
     </ClInclude>
-    <ClInclude Include="SellerOrderListInterface.h">
+    <ClInclude Include="SellerInterface.h">
       <Filter>헤더 파일\Interface</Filter>
     </ClInclude>
-    <ClInclude Include="SellerInformationInterface.h">
+    <ClInclude Include="SellerMallInterface.h">
+      <Filter>헤더 파일\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="BuyerMallInterface.h">
       <Filter>헤더 파일\Interface</Filter>
     </ClInclude>
   </ItemGroup>

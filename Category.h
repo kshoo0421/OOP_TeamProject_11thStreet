@@ -6,7 +6,7 @@ class Category
 {
 private :
 	std::string main_category;
-	std::vector<std::string> sub_category_list;	// DynamicArray<std::string> ¥Î√º
+	std::vector<std::string> sub_category_list;
 public :
 	Category() ;
 	~Category();
