@@ -1,13 +1,14 @@
 #pragma once
+#include <ctime>
 #include "Product.h"
 #include "DetailsInterface.h"
 
-class ProductDetails : public Product, public DetailsInterface
+class ProductDetails : public DetailsInterface
 {
 private :
 	std::string product_name;
-	const int posted_date;	// time 대신 int 사용
-	int effective_date;	// time 대신 int 사용
+	const tm posted_date;	
+	tm effective_date;	
 	std::string main_category;
 	std::string sub_category;
 	unsigned int main_price;

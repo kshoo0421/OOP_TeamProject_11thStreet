@@ -1,4 +1,5 @@
 #pragma once
+#include <list>
 #include "User.h"
 #include "Address.h"
 #include "Coupon.h"
@@ -7,7 +8,7 @@ class Buyer : public User
 {
 private :
 	Address addresses[3];
-	std::vector<unsigned int> IndexList;
+	std::list<unsigned int> IndexList;
 	std::vector<Coupon> its_coupon_list;
 public :
 	void add_new_address();

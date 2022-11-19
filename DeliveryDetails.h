@@ -2,7 +2,7 @@
 #include "Product.h"
 #include "DetailsInterface.h"
 
-class DeliveryDetails : public Product, public DetailsInterface
+class DeliveryDetails : public DetailsInterface
 {
 private :
 	std::string lead_time;

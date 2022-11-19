@@ -15,12 +15,12 @@
 class EleventhStreet : public SellerMallInterface, public BuyerMallInterface
 {
 private:
-	std::vector<Seller> seller_list;
-	std::vector<Buyer> buyer_list;
-	std::vector<Product> product_list;
-	std::vector<Category> category_list;
-	std::vector<Order> order_list;
-	std::vector<Coupon> coupon_list;
+	std::vector<Seller*> seller_list;
+	std::vector<Buyer*> buyer_list;
+	std::vector<Product*> product_list;
+	std::vector<Category*> category_list;
+	std::vector<Order*> order_list;
+	std::vector<Coupon*> coupon_list;
 public:
 	EleventhStreet();
 	~EleventhStreet();
@@ -57,4 +57,4 @@ public:
 	void go_shopping() override;
 	void look_up_my_order_list() const override;
 	void my_information() const override;
-}
+};
