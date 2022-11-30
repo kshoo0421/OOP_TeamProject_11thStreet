@@ -19,6 +19,18 @@
     <Filter Include="헤더 파일\Class">
       <UniqueIdentifier>{ba8fa021-fff9-4bd5-97b9-dadf69ed8df4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Product">
+      <UniqueIdentifier>{c9e60194-7d0c-4a14-92b6-a0196a729a88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\User">
+      <UniqueIdentifier>{cb1a98e9-61c6-4a96-99a6-ecb9e5ccfcce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\EleventhStreet">
+      <UniqueIdentifier>{9cde26da-5cf1-442e-8bb7-8ea4a9cb9b68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Order">
+      <UniqueIdentifier>{97930041-b748-4f3d-8dca-cf01d030a07a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -26,6 +38,48 @@
     </ClCompile>
     <ClCompile Include="BuyerInterface.h">
       <Filter>헤더 파일\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Product.cpp">
+      <Filter>소스 파일\Product</Filter>
+    </ClCompile>
+    <ClCompile Include="Option.cpp">
+      <Filter>소스 파일\Product</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionDetails.cpp">
+      <Filter>소스 파일\Product</Filter>
+    </ClCompile>
+    <ClCompile Include="ProductDetails.cpp">
+      <Filter>소스 파일\Product</Filter>
+    </ClCompile>
+    <ClCompile Include="DeliveryDetails.cpp">
+      <Filter>소스 파일\Product</Filter>
+    </ClCompile>
+    <ClCompile Include="User.cpp">
+      <Filter>소스 파일\User</Filter>
+    </ClCompile>
+    <ClCompile Include="Buyer.cpp">
+      <Filter>소스 파일\User</Filter>
+    </ClCompile>
+    <ClCompile Include="Seller.cpp">
+      <Filter>소스 파일\User</Filter>
+    </ClCompile>
+    <ClCompile Include="EleventhStreet.cpp">
+      <Filter>소스 파일\EleventhStreet</Filter>
+    </ClCompile>
+    <ClCompile Include="Category.cpp">
+      <Filter>소스 파일\EleventhStreet</Filter>
+    </ClCompile>
+    <ClCompile Include="Coupon.cpp">
+      <Filter>소스 파일\EleventhStreet</Filter>
+    </ClCompile>
+    <ClCompile Include="Order.cpp">
+      <Filter>소스 파일\Order</Filter>
+    </ClCompile>
+    <ClCompile Include="OrderItem.cpp">
+      <Filter>소스 파일\Order</Filter>
+    </ClCompile>
+    <ClCompile Include="Address.cpp">
+      <Filter>소스 파일\User</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -66,9 +120,6 @@
       <Filter>헤더 파일\Class</Filter>
     </ClInclude>
     <ClInclude Include="EleventhStreet.h">
-      <Filter>헤더 파일\Class</Filter>
-    </ClInclude>
-    <ClInclude Include="IndexList.h">
       <Filter>헤더 파일\Class</Filter>
     </ClInclude>
     <ClInclude Include="Option.h">

@@ -139,8 +139,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Address.cpp" />
+    <ClCompile Include="Buyer.cpp" />
     <ClCompile Include="BuyerInterface.h" />
+    <ClCompile Include="Category.cpp" />
+    <ClCompile Include="Coupon.cpp" />
+    <ClCompile Include="DeliveryDetails.cpp" />
+    <ClCompile Include="EleventhStreet.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Option.cpp" />
+    <ClCompile Include="OptionDetails.cpp" />
+    <ClCompile Include="Order.cpp" />
+    <ClCompile Include="OrderItem.cpp" />
+    <ClCompile Include="Product.cpp" />
+    <ClCompile Include="ProductDetails.cpp" />
+    <ClCompile Include="Seller.cpp" />
+    <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Address.h" />
@@ -153,7 +167,6 @@
     <ClInclude Include="DeliveryDetails.h" />
     <ClInclude Include="DetailsInterface.h" />
     <ClInclude Include="EleventhStreet.h" />
-    <ClInclude Include="IndexList.h" />
     <ClInclude Include="Option.h" />
     <ClInclude Include="OptionDetails.h" />
     <ClInclude Include="Order.h" />

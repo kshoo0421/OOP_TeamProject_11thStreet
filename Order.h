@@ -50,7 +50,7 @@ public :
 	void request_order_refund() override;
 
 	// Seller- 
-	void set_status() = 0;
+	void set_status() override;
 	void set_actual_arrival_date() override;
 	void display_order() const override;
 	void process_order() override;

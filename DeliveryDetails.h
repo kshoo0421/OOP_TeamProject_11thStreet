@@ -19,6 +19,6 @@ public :
 
 	// DetailsInterface
 	void init_details() override;
-	virtual void modify_details() override;
-	virtual void display_details() const override;
+	void modify_details() override;
+	void display_details() const override;
 };
