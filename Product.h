@@ -21,7 +21,7 @@ public :
 
 	// Buyer- 인터페이스 내용
 	void display_products_details() const override;
-	unsigned int get_lead_time() const override;
+	std::string get_lead_time() const override;
 	unsigned int get_free_delivery_amount() const override;
 	unsigned int get_delivery_fee() const override;
 	OrderItem option_selection() const override;

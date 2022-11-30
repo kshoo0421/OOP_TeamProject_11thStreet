@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <string>
 #include "DetailsInterface.h"
 
@@ -7,8 +8,13 @@ class OptionDetails : public DetailsInterface
 {
 private :
 	std::string option_value;
-	int additional_price;
+	unsigned int additional_price;
 	unsigned int stock;
+	// 개인 추가
+	void print_options();
+	void input_change(const int& option_num, string& string_temp, unsigned int& ui_temp) const;
+	void fix_change(const int& option_num, const string& string_temp, const unsigned int& ui_temp);
+
 public :
 	OptionDetails();
 	~OptionDetails();
