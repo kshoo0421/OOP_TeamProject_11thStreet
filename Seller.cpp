@@ -6,6 +6,7 @@ private:
 	Address source_address;
 	Address return_address;
 	std::list<unsigned int> its_product_index_list;
+
 public:
 	std::string get_return_address() const
 	{

@@ -4,33 +4,33 @@ using namespace std;
 class DeliveryDetails : public DetailsInterface
 {
 private:
-	string lead_time;
 	unsigned int delivery_fee;
 	unsigned int free_delivery_amount;
 	unsigned int exchange_delivery_fee;
 	unsigned int return_delivery_fee;
+	string lead_time;
 	// 개인 추가
 	void print_options()
 	{
 		cout << "수정할 항목을 선택하세요.\n";
-		cout << "1. lead_time\n";
-		cout << "2. delivery_fee\n";
-		cout << "3. free_delivery_amount\n";
-		cout << "4. exchange_delivery_fee\n";
-		cout << "5. return_delivery_fee\n";
+		cout << "1. delivery_fee\n";
+		cout << "2. free_delivery_amount\n";
+		cout << "3. exchange_delivery_fee\n";
+		cout << "4. return_delivery_fee\n";
+		cout << "5. lead_time\n";
 		cout << "그 외 : 수정 종료\n\n";
 	}
 
 	void input_change(const int& option_num, string& string_temp, unsigned int& ui_temp) const	// 변화하고 싶은 항목을 입력 및 확인하는 함수
 	{
 		bool is_right;	// 탈출 확인용
-		string options[5] = { "lead_times", "delivery_fee", "free_delivery_amount", "exchange_delivery_fee",  "return_delivery_fee" };
+		string options[5] = { "delivery_fee", "free_delivery_amount", "exchange_delivery_fee",  "return_delivery_fee", "lead_times"};
 		while (1)
 		{
 			cout << options[option_num - 1] << "을 입력하세요\n";
-			(option_num == 1) ? cin >> string_temp : cin >> ui_temp;
+			(option_num == 5) ? cin >> string_temp : cin >> ui_temp;
 			cout << options[option_num - 1] << "이 ";
-			(option_num == 1) ? cout << string_temp : cout << ui_temp;
+			(option_num == 5) ? cout << string_temp : cout << ui_temp;
 			cout << "이(가) 맞습니까?(true/false)\n";
 			cin >> is_right;
 			if (is_right) break;
@@ -42,24 +42,24 @@ private:
 		switch (option_num)
 		{
 		case 1:
-			lead_time = string_temp;
-			cout << "lead_time은 " << lead_time << "입니다.\n\n";
-			break;
-		case 2:
 			delivery_fee = ui_temp;
 			cout << "delivery fee는 " << delivery_fee << "원입니다.\n\n";
 			break;
-		case 3:
+		case 2:
 			free_delivery_amount = ui_temp;
 			cout << "free_delivery_amount는 " << free_delivery_amount << "입니다.\n\n";
 			break;
-		case 4:
+		case 3:
 			cout << exchange_delivery_fee << endl;
 			cout << "exchange_delivery_fee는 " << exchange_delivery_fee << "원입니다.\n\n";
 			break;
-		case 5:
+		case 4:
 			cout << return_delivery_fee << endl;
 			cout << "return_delivery_fee는 " << return_delivery_fee << "원입니다.\n\n";
+			break;
+		case 5:
+			lead_time = string_temp;
+			cout << "lead_time은 " << lead_time << "입니다.\n\n";
 			break;
 		}
 		return;

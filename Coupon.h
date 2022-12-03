@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <ctime>
 
 class Coupon
@@ -7,7 +8,7 @@ private :
 	unsigned int coupon_id;
 	unsigned int product_id;
 	unsigned int discounting;
-	tm expiration_date;
+	time_t expiration_date;
 public :
 	Coupon();
 	~Coupon();
