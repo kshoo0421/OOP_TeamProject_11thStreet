@@ -1,16 +1,20 @@
 #pragma once
+#include <iostream>
 #include <string>
 #include <vector>
 
 class User
 {
-protected :
+protected:
 	unsigned int user_id;
 	std::string email;
 	std::string password;
 	std::string user_name;
 	unsigned int balance;
-public :
+
+	void print_options();
+
+public:
 	User();
 	~User();
 	std::string get_user_name() const;

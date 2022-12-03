@@ -8,10 +8,7 @@ private:
 	std::string address;
 	std::string phone_number;
 public:
-	Address()
-	{
-
-	}
+	Address() = default;
 
 	~Address() = default;
 
@@ -29,9 +26,7 @@ public:
 
 	std::string get_address_name() const
 	{
-
 		return address_name;
-
 	}
 
 	std::string get_name() const

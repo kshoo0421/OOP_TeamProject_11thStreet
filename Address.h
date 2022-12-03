@@ -4,12 +4,12 @@
 
 class Address
 {
-private :
+private:
 	std::string address_name;
 	std::string name;
 	std::string address;
 	std::string phone_number;
-public :
+public:
 	Address();
 	~Address();
 	void init_address();
