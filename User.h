@@ -14,7 +14,7 @@ public :
 	User();
 	~User();
 	std::string get_user_name() const;
-	void get_id() const;
+	unsigned int get_id() const;
 	bool compare_email(const std::string& input_email) const;
 	bool compare_password(const std::string& input_password) const;
 	void display_account_information() const;

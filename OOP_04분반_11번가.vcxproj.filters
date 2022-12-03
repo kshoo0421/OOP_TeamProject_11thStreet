@@ -28,7 +28,7 @@
     <Filter Include="소스 파일\EleventhStreet">
       <UniqueIdentifier>{9cde26da-5cf1-442e-8bb7-8ea4a9cb9b68}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Order">
+    <Filter Include="소스 파일\User\Order">
       <UniqueIdentifier>{97930041-b748-4f3d-8dca-cf01d030a07a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -73,10 +73,10 @@
       <Filter>소스 파일\EleventhStreet</Filter>
     </ClCompile>
     <ClCompile Include="Order.cpp">
-      <Filter>소스 파일\Order</Filter>
+      <Filter>소스 파일\User\Order</Filter>
     </ClCompile>
     <ClCompile Include="OrderItem.cpp">
-      <Filter>소스 파일\Order</Filter>
+      <Filter>소스 파일\User\Order</Filter>
     </ClCompile>
     <ClCompile Include="Address.cpp">
       <Filter>소스 파일\User</Filter>

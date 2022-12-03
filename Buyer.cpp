@@ -12,7 +12,7 @@ public:
 
 	}
 
-	void dilete_address()
+	void delete_address()
 	{
 
 	}
@@ -22,9 +22,9 @@ public:
 
 	}
 
-	void get_address(const unsigned int& order_id) const
+	std::string get_address(const unsigned int& order_id) const
 	{
-
+		return addresses[order_id].get_address();
 	}
 
 	void add_order_list(const unsigned int& order_id) const

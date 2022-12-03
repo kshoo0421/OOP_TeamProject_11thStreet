@@ -14,34 +14,37 @@ public:
 
 	}
 
-	~User()
-	{
-
-	}
+	~User() = default;
 
 	std::string get_user_name() const
 	{
-
+		return user_name ;
 	}
 
-	void get_id() const
+	unsigned int get_id() const
 	{
-
+		return user_id ;
 	}
 
 	bool compare_email(const std::string& input_email) const
 	{
+		if (true)
+		{
 
+		}
 	}
 
 	bool compare_password(const std::string& input_password) const
 	{
+		if (true)
+		{
 
+		}
 	}
 
 	void display_account_information() const
 	{
-
+		cout<<
 	}
 
 	void modify_account_information()
