@@ -9,7 +9,7 @@ private:
 	unsigned int exchange_delivery_fee;
 	unsigned int return_delivery_fee;
 	string lead_time;
-	// 개인 추가
+
 	void print_options()
 	{
 		cout << "수정할 항목을 선택하세요.\n";
@@ -21,60 +21,7 @@ private:
 		cout << "그 외 : 수정 종료\n\n";
 	}
 
-	void input_change(const int& option_num, string& string_temp, unsigned int& ui_temp) const	// 변화하고 싶은 항목을 입력 및 확인하는 함수
-	{
-		bool is_right;	// 탈출 확인용
-		string options[5] = { "delivery_fee", "free_delivery_amount", "exchange_delivery_fee",  "return_delivery_fee", "lead_times"};
-		while (1)
-		{
-			cout << options[option_num - 1] << "을 입력하세요\n";
-			(option_num == 5) ? cin >> string_temp : cin >> ui_temp;
-			cout << options[option_num - 1] << "이 ";
-			(option_num == 5) ? cout << string_temp : cout << ui_temp;
-			cout << "이(가) 맞습니까?(true/false)\n";
-			cin >> is_right;
-			if (is_right) break;
-		}
-	}
-
-	void fix_change(const int& option_num, const string& string_temp, const unsigned int& ui_temp)	// 확인된 값으로 내부 값을 변화시키는 함수
-	{
-		switch (option_num)
-		{
-		case 1:
-			delivery_fee = ui_temp;
-			cout << "delivery fee는 " << delivery_fee << "원입니다.\n\n";
-			break;
-		case 2:
-			free_delivery_amount = ui_temp;
-			cout << "free_delivery_amount는 " << free_delivery_amount << "입니다.\n\n";
-			break;
-		case 3:
-			cout << exchange_delivery_fee << endl;
-			cout << "exchange_delivery_fee는 " << exchange_delivery_fee << "원입니다.\n\n";
-			break;
-		case 4:
-			cout << return_delivery_fee << endl;
-			cout << "return_delivery_fee는 " << return_delivery_fee << "원입니다.\n\n";
-			break;
-		case 5:
-			lead_time = string_temp;
-			cout << "lead_time은 " << lead_time << "입니다.\n\n";
-			break;
-		}
-		return;
-	}
-
-	// 개인 추가 끝
-
 public:
-	DeliveryDetails()
-	{
-		init_details();
-	}
-
-	~DeliveryDetails() = default;
-
 	string get_lead_time() const
 	{
 		return lead_time;
@@ -93,31 +40,69 @@ public:
 	// DetailsInterface
 	void init_details() override
 	{
-		lead_time = "";
-		delivery_fee = 0;
-		free_delivery_amount = 0;
-		exchange_delivery_fee = 0;
-		return_delivery_fee = 0;
+		cout << "초기값을 설정합니다.\n";
+		cout << "delivery_fee를 입력하세요 : ";
+		cin >> delivery_fee;
+		cout << "free_delivery_amount을 입력하세요 : ";
+		cin >> free_delivery_amount;
+		cout << "exchange_delivery_fee을 입력하세요 : ";
+		cin >> exchange_delivery_fee;
+		cout << "return_delivery_fee을 입력하세요 : ";
+		cin >> return_delivery_fee;
+		cout << "lead_time를 입력하세요 : ";
+		cin >> lead_time;
+		return;
 	}
 	 
 	void modify_details() override
 	{
+		bool is_break_while = false;
 		int option_num;
-		unsigned int ui_temp;
-		string string_temp;
 		while (1)
 		{
 			print_options();
 			cin >> option_num;
-			if (option_num < 0 || option_num > 4)
+			switch (option_num)
+			{
+			case 1:
+				cout << "delivery_fee를 변경합니다.\n";
+				cout << "변경할 delivery_fee를 입력하세요 : ";
+				cin >> delivery_fee;
+				cout << "delivery_fee가 " << delivery_fee << "로 변경되었습니다.\n";
+				break;
+			case 2:
+				cout << "free_delivery_amount를 변경합니다.\n";
+				cout << "변경할 free_delivery_amount를 입력하세요 : ";
+				cin >> free_delivery_amount;
+				cout << "free_delivery_amount가 " << free_delivery_amount << "로 변경되었습니다.\n";
+				break;
+			case 3:
+				cout << "exchange_delivery_fee를 변경합니다.\n";
+				cout << "변경할 exchange_delivery_fee를 입력하세요 : ";
+				cin >> exchange_delivery_fee;
+				cout << "exchange_delivery_fee가 " << exchange_delivery_fee << "로 변경되었습니다.\n";
+				break;
+			case 4:
+				cout << "return_delivery_fee를 변경합니다.\n";
+				cout << "변경할 return_delivery_fee를 입력하세요 : ";
+				cin >> return_delivery_fee;
+				cout << "return_delivery_fee가 " << return_delivery_fee << "로 변경되었습니다.\n";
+				break;
+			case 5:
+				cout << "lead_time을 변경합니다.\n";
+				cout << "변경할 lead_time를 입력하세요 : ";
+				cin >> lead_time;
+				cout << "lead_time이 " << lead_time << "로 변경되었습니다.\n";
+				break;
+
+			default :
+				is_break_while = true;
+				break;
+			}
+			if (is_break_while)
 			{
 				cout << "내용 수정을 종료합니다\n";
 				break;
-			}
-			else
-			{
-				input_change(option_num, string_temp, ui_temp);
-				fix_change(option_num, string_temp, ui_temp);
 			}
 		}
 		return;
@@ -125,10 +110,11 @@ public:
 
 	void display_details() const override
 	{
-		cout << lead_time << endl;
-		cout << delivery_fee << endl;
-		cout << free_delivery_amount << endl;
-		cout << exchange_delivery_fee << endl;
-		cout << return_delivery_fee << endl;
+		cout << "delivery_fee : " << delivery_fee << endl;
+		cout << "free_delivery_amount : " << free_delivery_amount << endl;
+		cout << "exchange_delivery_fee : " << exchange_delivery_fee << endl;
+		cout << "return_delivery_fee : " << return_delivery_fee << endl;
+		cout << "lead_time : " << lead_time << endl;
+		return;
 	}
 };

@@ -16,9 +16,6 @@ private :
 	DeliveryDetails delivery_details;
 	ProductDetails description;
 public :
-	Product();
-	~Product();
-
 	// Buyer- 인터페이스 내용
 	void display_products_details() const override;
 	std::string get_lead_time() const override;

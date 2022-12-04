@@ -9,13 +9,6 @@ private:
 	DeliveryDetails delivery_details;
 	ProductDetails description;
 public:
-	Product()
-	{
-
-	}
-
-	~Product() = default;
-
 	// Buyer- 인터페이스 내용
 	void display_products_details() const override
 	{

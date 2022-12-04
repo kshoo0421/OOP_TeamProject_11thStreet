@@ -3,10 +3,10 @@
 class EleventhStreet : public SellerMallInterface, public BuyerMallInterface
 {
 private:
+	CategoryManager category_manager;
 	std::vector<Seller*> seller_list;
 	std::vector<Buyer*> buyer_list;
 	std::vector<Product*> product_list;
-	std::vector<Category*> category_list;
 	std::vector<Order*> order_list;
 	std::vector<Coupon*> coupon_list;
 public:
@@ -58,7 +58,7 @@ public:
 
 	void display_main_categories() const override
 	{
-
+		category_manager.display_categories();
 	}
 
 	void display_sub_categories() const override
@@ -114,7 +114,6 @@ public:
 
 	void display_coupons(const unsigned int& product_id) override
 	{
-
 	}
 
 	Coupon get_coupon(const unsigned int& coupon_id) const override

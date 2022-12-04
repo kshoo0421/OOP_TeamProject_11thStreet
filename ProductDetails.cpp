@@ -1,4 +1,5 @@
 #include "ProductDetails.h"
+#include "CategoryManager.h"
 using namespace std;
 
 class ProductDetails : public DetailsInterface
@@ -7,74 +8,31 @@ private:
 	unsigned int main_price;	// 기본 가격
 	string product_name;	// 상품명
 	
-	string main_category;	// 메인 카테고리
+	MainCategory main_category;	// 메인 카테고리
 	string sub_category;	// 세부 카테고리
 
 	tm* posted_date;	// 상품 등록일
 	tm* effective_date;	// 게시 유효일
 
-	// 개인 추가
 	void print_options() const // 메뉴 선택 시 표시할 선택지들
 	{
 		cout << "설정할 항목을 선택하세요.\n";
 		cout << "1. product_name\n";
 		cout << "2. main_price\n";
 		cout << "3. category(main, sub)\n";
-	}
-
-	void input_change(const int& option_num, string& string_temp, unsigned int& ui_temp) const	// 변화하고 싶은 항목을 입력 및 확인하는 함수
-	{
-		bool is_right;	// 탈출 확인용
-		string options[3] = { "product_name", "main_price", "category" };
-		while (1)	// 확인될 때까지 반복
-		{
-			if (option_num == 3) return; // 카테고리는 예외. 추후 함수에서 진행
-
-			(option_num == 1) ? cin >> string_temp : cin >> ui_temp;	// string인지 unsigned int 인지 확인 후 입력받음
-			// 확인
-			cout << options[option_num - 1] << "이 ";
-			(option_num == 2) ? cout << string_temp : cout << ui_temp;
-			cout << "이(가) 맞습니까?(true/false)\n";
-			cin >> is_right;
-			if (is_right) break;	// 맞다면 탈출
-		}
-	}
-
-	void fix_change(const int& option_num, const string& string_temp, const unsigned int& ui_temp)	// 확인된 값으로 내부 값을 변화시키는 함수
-	{
-		switch (option_num)
-		{
-		case 1:
-			product_name = string_temp;
-			cout << "product_name은 " << product_name << "입니다.\n\n";
-			break;
-		case 2:
-			main_price = ui_temp;
-			cout << "main_price는 " << main_price << "원입니다.\n\n";
-			break;
-		case 3:
-			set_category();
-			cout << "main_category는 " << main_category << "입니다.\n\n";
-			cout << "sub_category는 " << sub_category << "입니다.\n\n";
-			break;
-		default: break;
-		}
+		cout << "그 외 : 수정 종료\n\n";
 		return;
 	}
 
 	void set_category()
 	{
-		// 카테고리 설정
+		CategoryManager category_manager;
+		main_category = category_manager.choose_main_category();
+		sub_category = category_manager.choose_sub_category(main_category);
+		return;
 	}
-	// 개인 추가 끝
 
 public:
-	ProductDetails()
-	{
-		init_details();
-	}
-	~ProductDetails() = default;
-
 	unsigned int get_main_price() const
 	{
 		return main_price;
@@ -103,28 +61,56 @@ public:
 	// DetailsInterface Interface
 	void init_details() override
 	{
+		cout << "초기값을 설정합니다.\n";
+		cout << "product_name를 입력하세요 : ";
+		cin >> product_name;
 
+		cout << "main_price을 입력하세요 : ";
+		cin >> main_price;
+
+		cout << "category를 설정하세요 : ";
+		set_category();
+		return;
 	}
 
 	void modify_details() override
 	{
+		bool is_break_while = false;
 		int option_num;
-		unsigned int ui_temp;
-		string string_temp;
-
 		while (1)
 		{
 			print_options();
 			cin >> option_num;
-			if (option_num < 0 || option_num > 3) 
+			cout << "1. product_name\n";
+			cout << "2. main_price\n";
+			cout << "3. category(main, sub)\n";
+
+			switch (option_num)
+			{
+			case 1:
+				cout << "product_name을 변경합니다.\n";
+				cout << "변경할 product_name를 입력하세요 : ";
+				cin >> product_name;
+				cout << "product_name이 " << product_name << "로 변경되었습니다.\n";
+				break;
+			case 2:
+				cout << "main_price를 변경합니다.\n";
+				cout << "변경할 main_price를 입력하세요 : ";
+				cin >> main_price;
+				cout << "main_price가 " << main_price << "로 변경되었습니다.\n";
+				break;
+			case 3:
+				cout << "category(main, sub)를 변경합니다.\n";
+				set_category();
+				break;
+			default:
+				is_break_while = true;
+				break;
+			}
+			if (is_break_while)
 			{
 				cout << "내용 수정을 종료합니다\n";
 				break;
-			}
-			else
-			{	
-				input_change(option_num, string_temp, ui_temp);
-				fix_change(option_num, string_temp, ui_temp);
 			}
 		}
 		return;

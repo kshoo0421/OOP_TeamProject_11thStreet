@@ -81,6 +81,12 @@
     <ClCompile Include="Address.cpp">
       <Filter>소스 파일\User</Filter>
     </ClCompile>
+    <ClCompile Include="CategoryManager.h">
+      <Filter>헤더 파일\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="CategoryManager.cpp">
+      <Filter>소스 파일\EleventhStreet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BuyerOrderInterface.h">

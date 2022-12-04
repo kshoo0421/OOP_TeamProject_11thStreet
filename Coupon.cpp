@@ -5,7 +5,7 @@ class Coupon
 private:
 	unsigned int coupon_id;
 	unsigned int product_id;
-	unsigned int discounting;	// 등록을 할 때 숫자 100 미만 퍼센테이지, 
+	unsigned int discounting;	// 등록할 때 금액으로 표시
 	time_t expiration_date;
 
 public:
@@ -13,7 +13,6 @@ public:
 	{
 		static unsigned int coupon_index = 1;
 		coupon_id = coupon_index;
-
 	}
 
 	~Coupon() = default;

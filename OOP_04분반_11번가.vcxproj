@@ -143,6 +143,8 @@
     <ClCompile Include="Buyer.cpp" />
     <ClCompile Include="BuyerInterface.h" />
     <ClCompile Include="Category.cpp" />
+    <ClCompile Include="CategoryManager.cpp" />
+    <ClCompile Include="CategoryManager.h" />
     <ClCompile Include="Coupon.cpp" />
     <ClCompile Include="DeliveryDetails.cpp" />
     <ClCompile Include="EleventhStreet.cpp" />
