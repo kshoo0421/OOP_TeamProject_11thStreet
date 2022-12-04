@@ -33,7 +33,7 @@ public:
 
 	OrderItem option_selection() const override
 	{
-	
+			
 	}
 	
 	unsigned int get_main_price() override
@@ -51,21 +51,7 @@ public:
 	void modify_product() override
 	{
 		description.modify_details();
-	}
-
-	void delete_product(const Product& product) override
-	{
-
-	}
-
-	void add_product(const Product& product) override
-	{
-		
-	}
-
-	void category_selection() override
-	{
-
+		return;
 	}
 
 	// ProductSearch- 인터페이스 내용

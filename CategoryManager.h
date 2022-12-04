@@ -28,4 +28,5 @@ public :
 	void display_categories() const;
 	MainCategory choose_main_category() const;
 	std::string choose_sub_category(const MainCategory& main_category) const;
+	std::string main_category_to_string(const MainCategory& main_category) const;
 };

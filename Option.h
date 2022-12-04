@@ -12,7 +12,5 @@ private :
 public :
 	Option();
 	~Option();
-	void delete_option();
-	void add_option();
 	void display_option();
 };

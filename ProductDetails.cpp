@@ -11,6 +11,8 @@ private:
 	MainCategory main_category;	// 메인 카테고리
 	string sub_category;	// 세부 카테고리
 
+	CategoryManager category_manager;
+
 	tm* posted_date;	// 상품 등록일
 	tm* effective_date;	// 게시 유효일
 
@@ -26,7 +28,6 @@ private:
 
 	void set_category()
 	{
-		CategoryManager category_manager;
 		main_category = category_manager.choose_main_category();
 		sub_category = category_manager.choose_sub_category(main_category);
 		return;
@@ -124,7 +125,7 @@ public:
 			<< posted_date->tm_mday << "일\n";
 		cout << "effective_date : " << effective_date->tm_year << "년 " << effective_date->tm_mon << "월 "
 			<< effective_date->tm_mday << "일\n";
-		cout << "main_category : " << main_category << endl;
+		cout << "main_category : " << category_manager.main_category_to_string(main_category) << endl;
 		cout << "sub_category : " << sub_category << endl;
 	}
 };

@@ -27,9 +27,6 @@ public :
 	// Seller- 인터페이스 내용
 	void display_product_details() const override;
 	void modify_product() override;
-	void delete_product(const Product& product) override;
-	void add_product(const Product& product) override;
-	void category_selection() override;
 
 	// ProductSearch- 인터페이스 내용
 	unsigned int get_product_id() const override;

@@ -1,39 +1,57 @@
 #include "Option.h"
+using namespace std;
 
 class Option
 {
 private:
-	std::string option_name;
-	std::vector<OptionDetails> option_detail_list;
+	string option_name;
+	vector<OptionDetails> option_detail_list;
 public:
-	Option()
-	{
-
-	}
+	Option() = default;
 
 	~Option() = default;
 
-
-
-	void delete_option()
+	void delete_option_details(const OptionDetails& option_detail)
 	{
+		vector<OptionDetails>::iterator iterator = option_detail_list.begin();
+		for (; iterator < option_detail_list.end(); iterator++)
+		{
+			if (iterator->get_option_value() == option_detail.get_option_value())
+			{
+				option_detail_list.erase(iterator);
+				cout << "항목 삭제가 완료되었습니다." << endl;
+				return;
+			}
+		}
+		cout << "삭제할 항목을 찾지 못했습니다." << endl;
 
 	}
 
-	void add_option()
+	void add_option_details(const OptionDetails& option_detail)
 	{
-	
+		vector<OptionDetails>::iterator iterator = option_detail_list.begin();
+		for (; iterator < option_detail_list.end(); iterator++)
+		{
+			if (iterator->get_option_value() == option_detail.get_option_value())
+			{
+				cout << "이미 존재하는 추가 항목입니다." << endl;
+				return;
+			}
+		}
+		option_detail_list.emplace_back(option_detail);
+		cout << "항목이 추가되었습니다." << endl;
+		return;
 	}
 
 	void display_option()
 	{
-		std::cout << option_name << std::endl;
-		std::vector<OptionDetails>::iterator iterator = option_detail_list.begin();
+		cout << option_name << endl;
+		vector<OptionDetails>::iterator iterator = option_detail_list.begin();
 		for (; iterator != option_detail_list.end(); iterator++)
 		{
-			std::cout << "option_value : " << iterator->get_option_value() << std::endl;
-			std::cout << "additional_price : " << iterator->get_additional_price() << std::endl;
-			std::cout << "get_option_value : " << iterator->get_option_value() << std::endl << std::endl;
+			cout << "option_value : " << iterator->get_option_value() << endl;
+			cout << "additional_price : " << iterator->get_additional_price() << endl;
+			cout << "get_option_value : " << iterator->get_option_value() << endl << endl;
 		}
 	}
 };

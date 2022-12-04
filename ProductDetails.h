@@ -12,6 +12,8 @@ private :
 	std::string main_category;
 	std::string sub_category;
 	
+	CategoryManager category_manager;
+
 	tm posted_date;
 	tm effective_date;
 

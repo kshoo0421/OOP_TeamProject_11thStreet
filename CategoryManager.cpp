@@ -283,4 +283,22 @@ public:
 			return "none";
 		}
 	}
+
+	string main_category_to_string(const MainCategory& main_category) const
+	{
+		switch (main_category)
+		{
+		case MainCategory::FASHION :
+			return "fashion";
+		case MainCategory::BEAUTY :
+			return "beauty";
+		case MainCategory::FOOD :
+			return "food";
+		case MainCategory::DIGITAL :
+			return "digital";
+		case MainCategory::LIFE :
+			return "life";
+		default: return "None";
+		}
+	}
 };
