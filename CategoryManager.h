@@ -1,5 +1,8 @@
 #pragma once
 #include <iostream>
+#include <vector>
+#include "Product.h"
+
 enum class MainCategory { NONE, FASHION, BEAUTY, FOOD, DIGITAL, LIFE };
 // 아래는 enum들은 참고용. 실제로 사용되지는 않음.
 enum class FashionCategory { CLOTHES, SHOES, BAG };
@@ -8,9 +11,16 @@ enum class FoodCategory { FRUIT, VEGETABLE, LIVESTOCK, FISH, SNACK };
 enum class DigitalCategory { TV, REFRIGERATOR, WASHING_MACHINE, COMPUTER, SMARTPHONE };
 enum class LifeCategory { BATHROOM, KITCHEN, CLEANING, WASHING };
 
-class CategoryManager
+static class CategoryManager
 {
 private:
+	std::vector<Product> fashion_list;
+	std::vector<Product> beauty_list;
+	std::vector<Product> food_list;
+	std::vector<Product> digital_list;
+	std::vector<Product> life;
+
+
 	void display_main_category() const;
 	void display_fashion_category() const;
 	void display_beauty_category() const;

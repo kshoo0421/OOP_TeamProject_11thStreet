@@ -31,6 +31,9 @@
     <Filter Include="소스 파일\Order">
       <UniqueIdentifier>{97930041-b748-4f3d-8dca-cf01d030a07a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Managers">
+      <UniqueIdentifier>{845a8215-3c9e-4043-989a-2470ca5f4cff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -85,7 +88,7 @@
       <Filter>헤더 파일\Class</Filter>
     </ClCompile>
     <ClCompile Include="CategoryManager.cpp">
-      <Filter>소스 파일\EleventhStreet</Filter>
+      <Filter>소스 파일\Managers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +163,9 @@
     </ClInclude>
     <ClInclude Include="BuyerMallInterface.h">
       <Filter>헤더 파일\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="ProductManager.h">
+      <Filter>헤더 파일\Class</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

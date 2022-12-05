@@ -85,6 +85,7 @@ public:
 	{
 
 	}
+
 	// SellerMallInterface-SellerInterface
 	void poster_product_list() override
 	{
@@ -114,6 +115,7 @@ public:
 
 	void display_coupons(const unsigned int& product_id) override
 	{
+
 	}
 
 	Coupon get_coupon(const unsigned int& coupon_id) const override

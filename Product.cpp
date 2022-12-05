@@ -3,12 +3,26 @@
 class Product : public BuyerProductInterface, public SellerProductInterface, public ProductSearchInterface
 {
 private:
+	std::string product_name;
 	unsigned int product_id;
 	unsigned int seller_id;
 	std::vector<Option> option_list;
 	DeliveryDetails delivery_details;
 	ProductDetails description;
 public:
+	void set_product_name()
+	{
+		std::cout << "상품 이름을 결정하세요 : ";
+		std::cin >> product_name;
+		std::cout << "상품 이름이 " << product_name << "으로 결정되었습니다.\n";
+		return;
+	}
+
+	std::string get_product_name() const
+	{
+		return product_name;
+	}
+
 	// Buyer- 인터페이스 내용
 	void display_products_details() const override
 	{

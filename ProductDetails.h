@@ -1,12 +1,14 @@
 #pragma once
 #include <ctime>
 #include "Product.h"
+#include "CategoryManager.h"
 #include "DetailsInterface.h"
 
 
 class ProductDetails : public DetailsInterface
 {
 private :
+	std::string product_name;
 	unsigned int main_price;
 	std::string product_name;
 	std::string main_category;

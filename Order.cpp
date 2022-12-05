@@ -66,7 +66,6 @@ public:
 
 	void set_buyer_address(const Address& buyer_address_in) override
 	{
-		//??buyer 클래스에 접근자가 필요하지 않는가??
 		buyer_address = buyer_address_in;
 		return;
 	}

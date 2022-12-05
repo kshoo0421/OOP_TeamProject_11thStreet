@@ -175,6 +175,7 @@
     <ClInclude Include="OrderItem.h" />
     <ClInclude Include="Product.h" />
     <ClInclude Include="ProductDetails.h" />
+    <ClInclude Include="ProductManager.h" />
     <ClInclude Include="ProductSearchInterface.h" />
     <ClInclude Include="SearchOrderInterface.h" />
     <ClInclude Include="SellerInterface.h" />
