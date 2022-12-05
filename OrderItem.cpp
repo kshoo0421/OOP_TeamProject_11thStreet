@@ -1,4 +1,5 @@
 #include "OrderItem.h"
+using namespace std;
 
 class OrderItem
 {
@@ -21,22 +22,26 @@ public:
 
 	void set_quantity()
 	{
-
+		cout << "주문하실 수량을 입력해주세요" << endl;
+		cin >> quantity;
+		return;
 	}
 
 	void set_couponed_price()
 	{
-
+		cout << "쿠폰의 할인 가격을 입력해주세요" << endl;
+		cin >> couponed_price;
 	}
 
 	void set_price()
 	{
-
+		/// cout??? product
 	}
 
-	void get_price() const
+	unsigned int get_price() const
 	{
 
+		return price;
 	}
 
 	void set_applied_coupon_id()
@@ -46,16 +51,22 @@ public:
 
 	unsigned int get_applied_coupon_id() const
 	{
-
+		return applied_coupon_id;
 	}
 
-	void get_couponed_price() const
+	unsigned int get_couponed_price() const // 변경
 	{
-
+		return couponed_price;
 	}
 
 	void display_order_item() const
 	{
+		cout << "주문 옵션 :" << option_string << endl;
+		cout << "주문 수량 :" << quantity << endl;
+		cout << "제품 가격 :" << price << endl;
+		cout << "할인 적용 가격 :" << couponed_price << endl;
 
 	}
+
+	
 };
