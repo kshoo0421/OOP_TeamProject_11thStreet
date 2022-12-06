@@ -27,28 +27,32 @@ public:
 		return;
 	}
 
+	/*
 	void set_couponed_price()
 	{
 		cout << "쿠폰의 할인 가격을 입력해주세요" << endl;
 		cin >> couponed_price;
 	}
+	*/
 
 	void set_price()
 	{
-		/// cout??? product
+		cout << "제품의 가격을 입력해주세요" << endl;
+		cin >> price;
 	}
 
+	unsigned int get_quantity() const
+	{
+		return quantity;
+	}
+	
 	unsigned int get_price() const
 	{
-
 		return price;
 	}
 
-	void set_applied_coupon_id()
-	{
 
-	}
-
+	/*
 	unsigned int get_applied_coupon_id() const
 	{
 		return applied_coupon_id;
@@ -58,13 +62,13 @@ public:
 	{
 		return couponed_price;
 	}
+	*/
 
 	void display_order_item() const
 	{
 		cout << "주문 옵션 :" << option_string << endl;
 		cout << "주문 수량 :" << quantity << endl;
 		cout << "제품 가격 :" << price << endl;
-		cout << "할인 적용 가격 :" << couponed_price << endl;
 
 	}
 

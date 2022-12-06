@@ -30,7 +30,6 @@ private :
 	int actual_arrival_date;
 	unsigned int delivery_fee;
 	unsigned int total_product_price;
-	unsigned int total_discount_amount;
 	unsigned int total_price;
 	Status status;
 public :
@@ -42,22 +41,22 @@ public :
 	void display_order_details() const override;
 	void display_order() const override;
 	void set_buyer_address(const Address& buyer_address) override;
-	void calculate_free_delivery_amount() override;
+	//void calculate_free_delivery_amount() override;
 	void set_delivery_price() override;
 	void set_total_price() override;
 	void set_total_product_price() override;
-	void set_total_discount_amount() override;
-	void request_order_refund() override;
+	//void set_total_discount_amount() override;
+	//void request_order_refund() override;
 
 	// Seller- 
 	void set_status() override;
 	void set_actual_arrival_date() override;
-	void display_order() const override;
+	void display_order_seller() const override;
 	void process_order() override;
-	void process_refund() override;
+	//void process_refund() override;
 
 	// Search-
 	unsigned int get_order_id() const override;
-	unsigned int get_buyer_id() const override;
-	unsigned int get_product_id() const override;
+	//unsigned int get_buyer_id() const override;
+	//unsigned int get_product_id() const override;
 };

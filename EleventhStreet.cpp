@@ -170,7 +170,7 @@ public:
 
 	Order* get_order(const unsigned int& order_id) const override
 	{
-
+		return order_list[order_id];
 	}
 
 	Product& get_product(const unsigned int& product_id) override
@@ -224,17 +224,36 @@ public:
 
 	void request_order(Order* new_order) override
 	{
+		int input = 0;
+		while (1)
+		{
+			cout << "주문하시겠습니까?" << endl;
+			cout << "1.상품 주문 " << endl;
+			cout << "2.주문 종료" << endl;
+			switch (input)
+			{
+			case 1:
+				add_new_order();
+			case 2:
+				cout << "주문이 종료되었습니다." << endl;
+				return;
+			}
+
+		}
 
 	}
 
-	void add_new_order() const override
+	void add_new_order() const override // 매개변수 추가
 	{
-
+		
 	}
 
 	void display_orders_by_buyer_id(const unsigned int& buyer_id) const override
 	{
-
+		
+		cout << "주문 상품 내역" << endl;
+		order_list[buyer_id]->display_order();
+		
 	}
 
 	Product& get_product(const unsigned int& product_id) override
@@ -244,7 +263,7 @@ public:
 
 	Order* get_order(const unsigned int& order_id) override
 	{
-
+		return order_list[order_id];
 	}
 
 	// BuyerMallInterface - BuyerInterface
@@ -253,9 +272,9 @@ public:
 
 	}
 
-	void look_up_my_order_list() const override
+	void look_up_my_order_list(const unsigned int& buyer_id) const override
 	{
-
+		cout << "내 장바구니 목록" << endl;
 	}
 
 	void my_information() override

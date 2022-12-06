@@ -56,6 +56,6 @@ public:
 	Order* get_order(const unsigned int& order_id) override;
 	// BuyerMallInterface - BuyerInterface
 	void go_shopping() override;
-	void look_up_my_order_list() const override;
+	void look_up_my_order_list(const unsigned int& buyer_id) const override;
 	void my_information() override;
 };

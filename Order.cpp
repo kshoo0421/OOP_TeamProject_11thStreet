@@ -15,7 +15,6 @@ private:
 	int actual_arrival_date;
 	unsigned int delivery_fee;
 	unsigned int total_product_price;
-	unsigned int total_discount_amount;
 	unsigned int total_price;
 	Status status;
 public:
@@ -58,7 +57,6 @@ public:
 		cout << "배송지 주소" << buyer_address.get_address_name() << endl;
 		cout << "주문시간 :" << order_date << "예상 배송시간 :" << estimate_order_date << endl;
 		cout << "제품 금액:" << total_product_price << endl;
-		cout << "할인 금액:" << total_discount_amount << endl;
 		cout << "총 금액:" << total_price << endl;
 
 		return;
@@ -70,19 +68,15 @@ public:
 		return;
 	}
 
-	void calculate_free_delivery_amount() override
-	{
-
-	}
-
 	void set_delivery_price() override
 	{
-
+		delivery_fee = total_product_price < 10000 ? 3000 : (total_product_price < 30000 ? 2500 : 0);
+		return;
 	}
 
 	void set_total_price() override
 	{
-		total_price = total_product_price - total_discount_amount + delivery_fee;
+		total_price = total_product_price + delivery_fee;
 		return;
 	}
 
@@ -91,17 +85,10 @@ public:
 		total_product_price = 0;
 		vector<OrderItem>::iterator iterator = order_item_list.begin();
 		for (; iterator < order_item_list.end(); iterator++)
-			total_product_price += iterator->get_price();
+			total_product_price += iterator->get_price() * iterator->get_quantity();
 	}
 
-	void set_total_discount_amount() override
-	{
-		total_discount_amount = 0;
-		vector<OrderItem>::iterator iterator = order_item_list.begin();
-		for (; iterator < order_item_list.end(); iterator++)
-			total_discount_amount += iterator->get_couponed_price();
-	}
-
+	/*
 	void request_order_refund() override
 	{
 		unsigned int input;
@@ -126,6 +113,7 @@ public:
 		cout << "환불이 완료되었습니다." << endl;
 
 	}
+	*/
 
 	// Seller- 
 	void set_status() override
@@ -136,10 +124,6 @@ public:
 		cout << "2. products_prepared" << endl;
 		cout << "3. products_on_delivery" << endl;
 		cout << "4. products_arriving" << endl;
-		cout << "5. refund_requested" << endl;
-		cout << "6. refunded" << endl;
-		cout << "7. partial_refund_requested" << endl;
-		cout << "8. patially_refunded" << endl;
 		cin >> i;
 		status = Status(i - 1);
 		return;
@@ -152,7 +136,7 @@ public:
 		cin >> actual_arrival_date;
 		return;
 	}
-	void display_order() const override
+	void display_order_seller() const override
 	{
 		///
 		///
@@ -166,24 +150,8 @@ public:
 
 	}
 
-	void process_refund() override
-	{
-		
-	}
-
 	// Search-
 	unsigned int get_order_id() const override
 	{
 		return order_id;
 	}
-
-	unsigned int get_buyer_id() const override
-	{
-		return buyer_id;
-	}
-
-	unsigned int get_product_id() const override
-	{
-		return product_id;
-	}
-};
