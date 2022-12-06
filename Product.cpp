@@ -6,7 +6,6 @@ private:
 	std::string product_name;
 	unsigned int product_id;
 	unsigned int seller_id;
-	std::vector<Option> option_list;
 	DeliveryDetails delivery_details;
 	ProductDetails description;
 public:
@@ -21,6 +20,11 @@ public:
 	std::string get_product_name() const
 	{
 		return product_name;
+	}
+
+	MainCategory get_category() const
+	{
+		description.get_category();
 	}
 
 	// Buyer- 인터페이스 내용
@@ -45,11 +49,6 @@ public:
 		return delivery_details.get_delivery_fee();
 	}
 
-	OrderItem option_selection() const override
-	{
-			
-	}
-	
 	unsigned int get_main_price() override
 	{
 		return description.get_main_price();

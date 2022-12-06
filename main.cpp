@@ -3,6 +3,6 @@
 
 int main()
 {
-	BuyerInterface* logined_buyer;
-	SellerInterface* logined_seller;
+	EleventhStreet eleventh_street;
+	return 0;
 }

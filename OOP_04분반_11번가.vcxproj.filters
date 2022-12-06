@@ -45,12 +45,6 @@
     <ClCompile Include="Product.cpp">
       <Filter>소스 파일\Product</Filter>
     </ClCompile>
-    <ClCompile Include="Option.cpp">
-      <Filter>소스 파일\Product</Filter>
-    </ClCompile>
-    <ClCompile Include="OptionDetails.cpp">
-      <Filter>소스 파일\Product</Filter>
-    </ClCompile>
     <ClCompile Include="ProductDetails.cpp">
       <Filter>소스 파일\Product</Filter>
     </ClCompile>
@@ -72,9 +66,6 @@
     <ClCompile Include="Category.cpp">
       <Filter>소스 파일\EleventhStreet</Filter>
     </ClCompile>
-    <ClCompile Include="Coupon.cpp">
-      <Filter>소스 파일\EleventhStreet</Filter>
-    </ClCompile>
     <ClCompile Include="Order.cpp">
       <Filter>소스 파일\Order</Filter>
     </ClCompile>
@@ -88,6 +79,9 @@
       <Filter>헤더 파일\Class</Filter>
     </ClCompile>
     <ClCompile Include="CategoryManager.cpp">
+      <Filter>소스 파일\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="ProductManager.cpp">
       <Filter>소스 파일\Managers</Filter>
     </ClCompile>
   </ItemGroup>
@@ -122,19 +116,10 @@
     <ClInclude Include="Category.h">
       <Filter>헤더 파일\Class</Filter>
     </ClInclude>
-    <ClInclude Include="Coupon.h">
-      <Filter>헤더 파일\Class</Filter>
-    </ClInclude>
     <ClInclude Include="DeliveryDetails.h">
       <Filter>헤더 파일\Class</Filter>
     </ClInclude>
     <ClInclude Include="EleventhStreet.h">
-      <Filter>헤더 파일\Class</Filter>
-    </ClInclude>
-    <ClInclude Include="Option.h">
-      <Filter>헤더 파일\Class</Filter>
-    </ClInclude>
-    <ClInclude Include="OptionDetails.h">
       <Filter>헤더 파일\Class</Filter>
     </ClInclude>
     <ClInclude Include="Order.h">

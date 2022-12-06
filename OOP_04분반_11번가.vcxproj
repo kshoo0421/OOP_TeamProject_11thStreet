@@ -145,16 +145,14 @@
     <ClCompile Include="Category.cpp" />
     <ClCompile Include="CategoryManager.cpp" />
     <ClCompile Include="CategoryManager.h" />
-    <ClCompile Include="Coupon.cpp" />
     <ClCompile Include="DeliveryDetails.cpp" />
     <ClCompile Include="EleventhStreet.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Option.cpp" />
-    <ClCompile Include="OptionDetails.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="OrderItem.cpp" />
     <ClCompile Include="Product.cpp" />
     <ClCompile Include="ProductDetails.cpp" />
+    <ClCompile Include="ProductManager.cpp" />
     <ClCompile Include="Seller.cpp" />
     <ClCompile Include="User.cpp" />
   </ItemGroup>
@@ -165,12 +163,9 @@
     <ClInclude Include="BuyerOrderInterface.h" />
     <ClInclude Include="BuyerProductInterface.h" />
     <ClInclude Include="Category.h" />
-    <ClInclude Include="Coupon.h" />
     <ClInclude Include="DeliveryDetails.h" />
     <ClInclude Include="DetailsInterface.h" />
     <ClInclude Include="EleventhStreet.h" />
-    <ClInclude Include="Option.h" />
-    <ClInclude Include="OptionDetails.h" />
     <ClInclude Include="Order.h" />
     <ClInclude Include="OrderItem.h" />
     <ClInclude Include="Product.h" />

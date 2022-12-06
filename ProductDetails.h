@@ -21,11 +21,11 @@ private :
 
 	// 개인 추가
 	void print_options() const;
-	void set_category();
 
 public :
 	unsigned int get_main_price() const;
 	void end_registeration();
+	MainCategory get_category() const;
 
 	// DetailsInterface Interface
 	void init_details() override;
