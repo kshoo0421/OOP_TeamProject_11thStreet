@@ -144,7 +144,6 @@
     <ClCompile Include="BuyerInterface.h" />
     <ClCompile Include="CategoryManager.cpp" />
     <ClCompile Include="CategoryManager.h" />
-    <ClCompile Include="DeliveryDetails.cpp" />
     <ClCompile Include="EleventhStreet.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Order.cpp" />
@@ -161,7 +160,6 @@
     <ClInclude Include="BuyerMallInterface.h" />
     <ClInclude Include="BuyerOrderInterface.h" />
     <ClInclude Include="BuyerProductInterface.h" />
-    <ClInclude Include="DeliveryDetails.h" />
     <ClInclude Include="DetailsInterface.h" />
     <ClInclude Include="EleventhStreet.h" />
     <ClInclude Include="Order.h" />

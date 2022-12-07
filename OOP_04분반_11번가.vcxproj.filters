@@ -48,9 +48,6 @@
     <ClCompile Include="ProductDetails.cpp">
       <Filter>소스 파일\Product</Filter>
     </ClCompile>
-    <ClCompile Include="DeliveryDetails.cpp">
-      <Filter>소스 파일\Product</Filter>
-    </ClCompile>
     <ClCompile Include="User.cpp">
       <Filter>소스 파일\User</Filter>
     </ClCompile>
@@ -108,9 +105,6 @@
       <Filter>헤더 파일\Class</Filter>
     </ClInclude>
     <ClInclude Include="Buyer.h">
-      <Filter>헤더 파일\Class</Filter>
-    </ClInclude>
-    <ClInclude Include="DeliveryDetails.h">
       <Filter>헤더 파일\Class</Filter>
     </ClInclude>
     <ClInclude Include="EleventhStreet.h">

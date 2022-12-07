@@ -38,28 +38,28 @@ private:
 	Buyer& buyer_log_in();
 	void set_ids_and_orders();
 
-public:
-	EleventhStreet();
 	Product register_new_product() const;
 
 	// SellerMallInterface
 	void display_categories() const override;
 	void add_new_product(const Product& new_product) override;
-	void display_orders_by_seller_id(const unsigned int& seller_id) const override;
 	Order get_order(const unsigned int& order_id) const override;
-	Product& get_product(const unsigned int& product_id) override;
+
 	// SellerMallInterface-SellerInterface
-	void poster_product_list() override;
+	void register_product() override;
 
 	// BuyerMallInterface
 	void display_all_products() override;
 	void request_order(Order new_order) override;
 	void add_new_order() override;
-	void display_orders_by_buyer_id() const override;
 
-	Order get_order() override;
 	// BuyerMallInterface - BuyerInterface
 	void go_shopping() override;
 	void look_up_my_order_list() const override;
 	void my_information() override;
+	void display_orders_by_buyer_id() const;
+	Order get_order() override;
+
+public:
+	EleventhStreet();
 };

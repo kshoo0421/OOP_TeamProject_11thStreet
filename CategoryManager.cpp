@@ -3,16 +3,16 @@ using namespace std;
 
 void CategoryManager::display_categories() const
 {
-	cout << "카테고리\n";
-	cout << "1. fashion\n";
-	cout << "2. beauty\n";
-	cout << "3. food\n";
-	cout << "4. digital\n";
-	cout << "5. life\n\n";
+	cout << "카테고리" << endl;
+	cout << "1. fashion" << endl;
+	cout << "2. beauty" << endl;
+	cout << "3. food" << endl;
+	cout << "4. digital" << endl;
+	cout << "5. life" << endl << endl;
 	return;
 }
 
-enum MainCategory CategoryManager::choose_main_category() const
+enum class MainCategory CategoryManager::choose_main_category() const
 {
 	int input;
 	display_categories();
@@ -41,7 +41,7 @@ enum MainCategory CategoryManager::choose_main_category() const
 	}
 }
 
-string CategoryManager::main_category_to_string(const enum MainCategory& main_category) const
+string CategoryManager::main_category_to_string(const enum class MainCategory& main_category) const
 {
 	switch (main_category)
 	{

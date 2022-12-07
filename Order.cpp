@@ -31,7 +31,6 @@ void Order::display_order() const
 	cout << "주문시간 :" << order_date << "예상 배송시간 :" << estimate_order_date << endl;
 	cout << "제품 금액:" << total_product_price << endl;
 	cout << "총 금액:" << total_price << endl;
-
 	return;
 }
 

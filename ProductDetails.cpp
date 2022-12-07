@@ -1,45 +1,34 @@
 #include "ProductDetails.h"
 using namespace std;
 
-ProductDetails::ProductDetails()
+// private
+void ProductDetails::set_product_name()
 {
-	category_manager = new CategoryManager();
-}
-
-ProductDetails::~ProductDetails()
-{
-	delete category_manager;
-}
-
-void ProductDetails::print_options() const // 메뉴 선택 시 표시할 선택지들
-{
-	cout << "설정할 항목을 선택하세요.\n";
-	cout << "1. product_name\n";
-	cout << "2. main_price\n";
-	cout << "3. category\n";
-	cout << "그 외 : 수정 종료\n\n";
+	cout << "상품명을 설정하세요 : ";
+	cin >> product_name;
 	return;
 }
 
-unsigned int ProductDetails::get_main_price() const
+void ProductDetails::set_main_price()
 {
-	return main_price;
-}
-	
-enum MainCategory ProductDetails::get_category() const
-{
-	return main_category;
+	cout << endl << "가격을 설정하세요 : ";
+	cin >> main_price;
+	return;
 }
 
-void ProductDetails::end_registeration()	// 첫 확정일자
+void ProductDetails::set_main_category()
 {
-	if (posted_date == NULL)
-	{
-		time_t temp_time_t = time(0);
-		posted_date = localtime(&temp_time_t);
-		temp_time_t += 2592000;	// 30일에 해당하는 초
-		effective_date = localtime(&temp_time_t);
-	}
+	cout << endl << "카테고리를 설정하세요 : ";
+	main_category = category_manager.choose_main_category();
+	return;
+}
+
+void ProductDetails::set_posted_date()
+{
+	time_t temp_time_t = time(0);
+	posted_date = localtime(&temp_time_t);
+	temp_time_t += 2592000;	// 30일에 해당하는 초
+	effective_date = localtime(&temp_time_t);
 	return;
 }
 
@@ -51,21 +40,50 @@ void ProductDetails::extension_effective_time()	// 유효기간 현재 일자 기준 30일 
 	return;
 }
 
-// DetailsInterface Interface
-void ProductDetails::init_details()
+void ProductDetails::print_options() const // 메뉴 선택 시 표시할 선택지들
 {
-	cout << "초기값을 설정합니다.\n";
-	cout << "product_name를 입력하세요 : ";
-	cin >> product_name;
-
-	cout << "main_price을 입력하세요 : ";
-	cin >> main_price;
-
-	cout << "category를 설정하세요 : ";
-	main_category = category_manager->choose_main_category();
+	cout << "변경할 항목을 선택하세요." << endl;
+	cout << "1. 상품명 변경" << endl;
+	cout << "2. 가격 변경" << endl;
+	cout << "3. 카테고리 변경" << endl;
+	cout << "4. 상품 등록 기간 연장" << endl;
+	cout << "그 외 : 수정 종료" << endl << endl;
 	return;
 }
 
+// DetailsInterface Interface
+void ProductDetails::init_details()
+{
+	set_product_name();
+	set_main_price();
+	set_main_category();
+	set_posted_date();
+	cout << endl << "상품 초기 등록이 완료되었습니다." << endl << endl;
+	return;
+}
+
+// public
+ProductDetails::ProductDetails()
+{
+	init_details();
+}
+
+string ProductDetails::get_product_name() const
+{
+	return product_name;
+}
+
+unsigned int ProductDetails::get_main_price() const
+{
+	return main_price;
+}
+	
+enum class MainCategory ProductDetails::get_category() const
+{
+	return main_category;
+}
+
+// DetailsInterface Interface
 void ProductDetails::modify_details()
 {
 	bool is_break_while = false;
@@ -74,35 +92,37 @@ void ProductDetails::modify_details()
 	{
 		print_options();
 		cin >> option_num;
-		cout << "1. product_name\n";
-		cout << "2. main_price\n";
-		cout << "3. category(main, sub)\n";
 
 		switch (option_num)
 		{
 		case 1:
-			cout << "product_name을 변경합니다.\n";
+			cout << "product_name을 변경합니다." << endl;
 			cout << "변경할 product_name를 입력하세요 : ";
 			cin >> product_name;
-			cout << "product_name이 " << product_name << "로 변경되었습니다.\n";
+			cout << "product_name이 " << product_name << "로 변경되었습니다." << endl;
 			break;
 		case 2:
-			cout << "main_price를 변경합니다.\n";
+			cout << "main_price를 변경합니다." << endl;
 			cout << "변경할 main_price를 입력하세요 : ";
 			cin >> main_price;
-			cout << "main_price가 " << main_price << "로 변경되었습니다.\n";
+			cout << "main_price가 " << main_price << "로 변경되었습니다." << endl;
 			break;
 		case 3:
-			cout << "category를 변경합니다.\n";
-			main_category = category_manager->choose_main_category();
+			cout << "category를 변경합니다." << endl;
+			main_category = category_manager.choose_main_category();
 			break;
+		case 4:
+			extension_effective_time();
+			cout << "유효기간이" << effective_date->tm_year << "년 " << effective_date->tm_mon << "월 "
+				<< effective_date->tm_mday << "일로 변경되었습니다." << endl;
 		default:
 			is_break_while = true;
 			break;
 		}
+		cout << endl;
 		if (is_break_while)
 		{
-			cout << "내용 수정을 종료합니다\n";
+			cout << "내용 수정을 종료합니다." << endl;
 			break;
 		}
 	}
@@ -114,9 +134,9 @@ void ProductDetails::display_details() const	// 세부 내용 표시
 	cout << "product_name : " << product_name << endl;
 	cout << "main_price : " << main_price << endl;
 	cout << "posted_date : " << posted_date->tm_year << "년 " << posted_date->tm_mon << "월 "
-		<< posted_date->tm_mday << "일\n";
+		<< posted_date->tm_mday << "일" << endl;
 	cout << "effective_date : " << effective_date->tm_year << "년 " << effective_date->tm_mon << "월 "
-		<< effective_date->tm_mday << "일\n";
-	cout << "category : " << category_manager->main_category_to_string(main_category) << endl;
+		<< effective_date->tm_mday << "일" << endl;
+	cout << "category : " << category_manager.main_category_to_string(main_category) << endl;
 	return;
 }

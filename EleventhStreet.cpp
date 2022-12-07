@@ -2,9 +2,13 @@
 
 void EleventhStreet::use_eleventh_street()
 {
+	int input;
 	while (is_logined == false)
 	{
 		log_in();
+		cout << "로그인을 종료하시겠습니까?(1 : 예, 그 외 : 아니요)" << endl;
+		cin >> input;
+		if (input == 1) break;
 	}
 	if (is_logined)
 	{
@@ -15,6 +19,7 @@ void EleventhStreet::use_eleventh_street()
 
 void EleventhStreet::use_seller_interface()
 {
+	bool is_break = false;
 	int input;
 	while (1)
 	{
@@ -23,15 +28,22 @@ void EleventhStreet::use_seller_interface()
 		switch (input)
 		{
 		case 1: 
-			poster_product_list();
+			register_product();
 			break;
 		case 2: 
 			my_information();
 			break;
+		case 3:
+			log_out();
+			is_break = true;
+			cout << "로그아웃합니다." << endl;
+			break;
 		default :
+			is_break = true;
 			cout << "이용을 종료합니다." << endl;
 			break;
 		}
+		if (is_break) break;
 	}
 }
 
@@ -39,7 +51,8 @@ void EleventhStreet::display_seller_interface()
 {
 	cout << "이용 가능 목록" << endl;
 	cout << "1. 상품 등록하기" << endl;
-	cout << "2. 판매자 정보 보기" << endl << endl;
+	cout << "2. 판매자 정보 보기" << endl;
+	cout << "3. 로그아웃 하기" << endl << endl;
 	return;
 }
 
@@ -135,6 +148,7 @@ Seller& EleventhStreet::seller_log_in()
 	default: break;
 	}
 	cout << "로그인에 실패했습니다." << endl;
+	return seller_log_in();
 }
 
 Buyer& EleventhStreet::buyer_log_in()
@@ -159,6 +173,7 @@ Buyer& EleventhStreet::buyer_log_in()
 	default: break;
 	}
 	cout << "로그인에 실패했습니다." << endl;
+	return buyer_log_in();
 }
 
 void EleventhStreet::set_ids_and_orders()
@@ -169,13 +184,9 @@ void EleventhStreet::set_ids_and_orders()
 		buyer_list[i].set_id(2001 + i);
 		order_list.emplace_back(Order((unsigned int)3001 + i));
 	}
+	return;
 }
 
-EleventhStreet::EleventhStreet()
-{
-	set_ids_and_orders();
-	use_eleventh_street();
-}
 
 // SellerMallInterface
 void EleventhStreet::display_categories() const
@@ -191,12 +202,6 @@ void EleventhStreet::add_new_product(const Product& new_product)
 	return;
 }
 
-void EleventhStreet::display_orders_by_seller_id(const unsigned int& seller_id) const
-{
-	product_manager.display_orders_by_seller_id(seller_id);
-	return;
-}
-
 Order EleventhStreet::get_order(const unsigned int& order_id) const
 {
 	return order_list[order_id];
@@ -205,13 +210,11 @@ Order EleventhStreet::get_order(const unsigned int& order_id) const
 Product EleventhStreet::register_new_product() const
 {
 	Product new_product;
-	new_product.set_product_name();
-	new_product.modify_product();
 	return new_product;
 }
 
 // SellerMallInterface-SellerInterface
-void EleventhStreet::poster_product_list()
+void EleventhStreet::register_product()
 {
 	int input;
 	while (1)
@@ -227,7 +230,7 @@ void EleventhStreet::poster_product_list()
 			add_new_product(register_new_product());
 			break;
 		case 2 :
-			display_orders_by_seller_id(cur_user.get_id());
+			product_manager.display_products_by_seller_id(cur_user.get_id());
 			break;
 		case 3 :
 			product_manager.delete_product();
@@ -286,12 +289,7 @@ void EleventhStreet::display_orders_by_buyer_id() const
 		
 	cout << "주문 상품 내역" << endl;
 	order_list[cur_user_index].display_order();
-		
-}
-
-Product& EleventhStreet::get_product(const unsigned int& product_id)
-{
-	return product_manager.get_product(product_id);
+	return;
 }
 
 Order EleventhStreet::get_order()
@@ -361,4 +359,18 @@ void EleventhStreet::my_information()
 		}
 	}
 	return;
+}
+
+EleventhStreet::EleventhStreet()
+{
+	int input;
+	set_ids_and_orders();
+	while (1)
+	{
+		use_eleventh_street();
+		cout << "11번가를 종료하시겠습니까?(예 : 1, 그 외 숫자 : 아니요)" ;
+		cin >> input;
+		if (input == 1) break;
+	}
+	cout << "11번가를 종료합니다." << endl;
 }

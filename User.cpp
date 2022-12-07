@@ -9,6 +9,7 @@ void User::print_options()
 	cout << "3. password" << endl;
 	cout << "4. user_name" << endl;
 	cout << "5. balance" << endl;
+	cout << "그 외 : 나가기" << endl << endl;
 	return;
 }
 
@@ -62,33 +63,33 @@ void User::modify_account_information()
 		{
 		case 1:
 			cout << "user_id를 변경합니다." << endl;
-			cout << "변경할 user_id를 입력하세요 : ";
+			cout << "변경할 user_id를 입력하세요(숫자만 입력) : ";
 			cin >> user_id;
-			cout << "user_id가 " << user_id << "로 변경되었습니다." << endl;
+			cout << "user_id가 " << user_id << "로 변경되었습니다." << endl << endl;
 			break;
 
 		case 2:
 			cout << "email을 변경합니다." << endl;
 			cin >> email;
-			cout << "email이 " << email << "로 변경되었습니다." << endl;
+			cout << "email이 " << email << "로 변경되었습니다." << endl << endl;
 			break;
 
 		case 3:
 			cout << "password를 변경합니다." << endl;
 			cin >> password;
-			cout << "password가 " << password << "로 변경되었습니다." << endl;
+			cout << "password가 " << password << "로 변경되었습니다." << endl << endl;
 			break;
 
 		case 4:
 			cout << "user_name을 변경합니다." << endl;
 			cin >> user_name;
-			cout << "user_names이 " << user_name << "로 변경되었습니다." << endl;
+			cout << "user_names이 " << user_name << "로 변경되었습니다." << endl << endl;
 			break;
 
 		case 5:
 			cout << "balance를 변경합니다." << endl;
 			cin >> balance;
-			cout << "balance가 " << balance << "로 변경되었습니다." << endl;
+			cout << "balance가 " << balance << "로 변경되었습니다." << endl << endl;
 			break;
 		default:
 			break_while = true;

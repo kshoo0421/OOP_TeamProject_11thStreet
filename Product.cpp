@@ -3,24 +3,12 @@ using namespace std;
 
 Product::Product()
 {
-	delivery_details = new DeliveryDetails();
-	description = new ProductDetails();
-	category_manager = new CategoryManager();
+	init_product_set();
 }
 
 Product::~Product()
 {
-	delete delivery_details;
 	delete description;
-	delete category_manager;
-}
-
-void Product::set_product_name()
-{
-	cout << "상품 이름을 결정하세요 : ";
-	cin >> product_name;
-	cout << "상품 이름이 " << product_name << "으로 결정되었습니다.\n";
-	return;
 }
 
 string Product::get_product_name() const
@@ -28,43 +16,38 @@ string Product::get_product_name() const
 	return product_name;
 }
 
-enum MainCategory Product::get_category() const
+enum class MainCategory Product::get_category() const
 {
 	return description->get_category();
 }
 
 // Buyer- 인터페이스 내용
-void Product::display_products_details() const
-{
-	description->display_details();
-	return;
-}
-
-unsigned int Product::get_delivery_fee() const 
-{
-	return delivery_details->get_delivery_fee();
-}
-
 unsigned int Product::get_main_price() 
 {
 	return description->get_main_price();
 }
 
-// Seller- 인터페이스 내용
-void Product::display_product_details() const 
+void Product::display_product_details() const
 {
 	description->display_details();
 	return;
 }
 
-void Product::modify_product() 
+// Seller- 인터페이스 내용
+void Product::init_product_set()
+{
+	description = new ProductDetails();
+	product_name = description->get_product_name();
+}
+
+void Product::modify_product()
 {
 	description->modify_details();
 	return;
 }
 
 // ProductSearch- 인터페이스 내용
-unsigned int Product::get_product_id() const 
+unsigned int Product::get_product_id() const
 {
 	return product_id;
 }

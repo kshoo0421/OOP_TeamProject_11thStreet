@@ -162,7 +162,7 @@ void ProductManager::display_products_in_category()
 	std::cout << "상품 보기를 종료합니다." << std::endl;
 }
 
-void ProductManager::display_orders_by_seller_id(const unsigned int& seller_id) const
+void ProductManager::display_products_by_seller_id(const unsigned int& seller_id) const
 {
 	cout << "판매자 상품을 표시합니다." << endl;
 	cout << "fashion category" << endl;
@@ -196,73 +196,39 @@ Product& ProductManager::get_product()
 		display_products_in_sub_category(fashion_list);
 		cout << "항목을 선택하세요(숫자로 입력) : ";
 		cin >> input;
-		return fashion_list[input - 1];
+		return fashion_list[--input];
 		break;
 	case 2:
 		cout << "beauty category" << endl;
 		display_products_in_sub_category(beauty_list);
 		cout << "항목을 선택하세요(숫자로 입력) : ";
 		cin >> input;
-		return beauty_list[input - 1];
+		return beauty_list[--input];
 		break;
 	case 3:
 		cout << "food category" << endl;
 		display_products_in_sub_category(food_list);
 		cout << "항목을 선택하세요(숫자로 입력) : ";
 		cin >> input;
-		return food_list[input - 1];
+		return food_list[--input];
 		break;
 	case 4:
 		cout << "digital category" << endl;
 		display_products_in_sub_category(digital_list);
 		cout << "항목을 선택하세요(숫자로 입력) : ";
 		cin >> input;
-		return digital_list[input - 1];
+		return digital_list[--input];
 		break;
 	case 5:
 		cout << "life category" << endl;
 		display_products_in_sub_category(life_list);
 		cout << "항목을 선택하세요(숫자로 입력) : ";
 		cin >> input;
-		return life_list[input - 1];
+		return life_list[--input];
 		break;
 	default:
 		break;
 	}
 	std::cout << "상품 보기를 종료합니다." << std::endl;
-}
-
-Product& ProductManager::get_product(const unsigned int& product_id)
-{
-	for (int i = 0; i < fashion_list.size(); i++)
-	{
-		if (fashion_list[i].get_product_id() == product_id)
-			return fashion_list[i];
-	}
-
-	for (int i = 0; i < beauty_list.size(); i++)
-	{
-		if (beauty_list[i].get_product_id() == product_id)
-			return beauty_list[i];
-	}
-
-	for (int i = 0; i < food_list.size(); i++)
-	{
-		if (food_list[i].get_product_id() == product_id)
-			return food_list[i];
-	}
-
-	for (int i = 0; i < digital_list.size(); i++)
-	{
-		if (digital_list[i].get_product_id() == product_id)
-			return digital_list[i];
-	}
-
-	for (int i = 0; i < life_list.size(); i++)
-	{
-		if (life_list[i].get_product_id() == product_id)
-			return life_list[i];
-	}
-
-	cout << "찾지 못했습니다." << endl;
+	return get_product();
 }
