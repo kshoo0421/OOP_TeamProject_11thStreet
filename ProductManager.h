@@ -2,19 +2,19 @@
 #include <iostream>
 #include <vector>
 #include "Product.h"
-#include "CategoryManager.h"
-using namespace std;
 
 class ProductManager
 {
 private:
 	CategoryManager category_manager;
-	vector<Product> fashion_list;
-	vector<Product> beauty_list;
-	vector<Product> food_list;
-	vector<Product> digital_list;
-	vector<Product> life_list;
+	std::vector<Product> fashion_list;
+	std::vector<Product> beauty_list;
+	std::vector<Product> food_list;
+	std::vector<Product> digital_list;
+	std::vector<Product> life_list;
 
+	void display_products_in_sub_category(std::vector<Product> product_list) const;
+	bool is_product_in_list(const Product& product, std::vector<Product> product_list);
 public :
 	void add_product(const Product& product);
 	void delete_product();

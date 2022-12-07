@@ -3,29 +3,28 @@
 #include "Product.h"
 #include "CategoryManager.h"
 #include "DetailsInterface.h"
-
+using namespace std;
 
 class ProductDetails : public DetailsInterface
 {
-private :
-	std::string product_name;
-	unsigned int main_price;
-	std::string product_name;
-	std::string main_category;
-	std::string sub_category;
-	
+private:
 	CategoryManager category_manager;
 
-	tm posted_date;
-	tm effective_date;
+	unsigned int main_price;	// 기본 가격
+	std::string product_name;	// 상품명
 
-	// 개인 추가
+	MainCategory main_category;	// 메인 카테고리
+
+	tm* posted_date;	// 상품 등록일
+	tm* effective_date;	// 게시 유효일
+
 	void print_options() const;
 
-public :
+public:
 	unsigned int get_main_price() const;
-	void end_registeration();
 	MainCategory get_category() const;
+	void end_registeration();	
+	void extension_effective_time();
 
 	// DetailsInterface Interface
 	void init_details() override;

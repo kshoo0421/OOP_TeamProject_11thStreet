@@ -5,6 +5,8 @@
 #include "SearchOrderInterface.h"
 #include "OrderItem.h"
 #include "Address.h"
+#include <windows.h>
+
 enum Status
 {
 	order_requested, 
@@ -25,15 +27,15 @@ private :
 	unsigned int buyer_id;
 	std::vector<OrderItem> order_item_list;
 	Address buyer_address;
-	const unsigned int order_date;
-	const unsigned int estimate_order_date;
+	unsigned int order_date;
+	unsigned int estimate_order_date;
 	int actual_arrival_date;
 	unsigned int delivery_fee;
 	unsigned int total_product_price;
 	unsigned int total_price;
 	Status status;
 public :
-	Order(const unsigned int& input);
+	Order(const unsigned int& input) : order_id(input) { };
 
 	// Buyer- 
 	void add_order_item(const OrderItem& new_item) override;

@@ -5,7 +5,6 @@
 class DeliveryDetails : public DetailsInterface
 {
 private :
-	std::string lead_time;
 	unsigned int delivery_fee;
 	unsigned int free_delivery_amount;
 	unsigned int exchange_delivery_fee;
@@ -13,9 +12,7 @@ private :
 	void print_options();
 
 public :
-	std::string get_lead_time() const;
 	unsigned int get_delivery_fee() const;
-	unsigned int get_free_delivery_amount() const;
 
 	// DetailsInterface
 	void init_details() override;

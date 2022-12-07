@@ -1,83 +1,59 @@
 #include "DeliveryDetails.h"
 using namespace std;
 
-class DeliveryDetails : public DetailsInterface
+void DeliveryDetails::print_options()
 {
-private:
-	unsigned int delivery_fee;
-	string lead_time;
+	cout << "수정할 항목을 선택하세요.\n";
+	cout << "1. delivery_fee\n";
+	cout << "그 외 : 수정 종료\n\n";
+}
 
-	void print_options()
-	{
-		cout << "수정할 항목을 선택하세요.\n";
-		cout << "1. delivery_fee\n";
-		cout << "2. lead_time\n";
-		cout << "그 외 : 수정 종료\n\n";
-	}
+unsigned int DeliveryDetails::get_delivery_fee() const
+{
+	return delivery_fee;
+}
 
-public:
-	string get_lead_time() const
-	{
-		return lead_time;
-	}
-
-	unsigned int get_delivery_fee() const
-	{
-		return delivery_fee;
-	}
-
-
-	// DetailsInterface
-	void init_details() override
-	{
-		cout << "초기값을 설정합니다.\n";
-		cout << "delivery_fee를 입력하세요 : ";
-		cin >> delivery_fee;
-		cout << "lead_time를 입력하세요 : ";
-		cin >> lead_time;
-		return;
-	}
+// DetailsInterface
+void DeliveryDetails::init_details()
+{
+	cout << "초기값을 설정합니다.\n";
+	cout << "delivery_fee를 입력하세요 : ";
+	cin >> delivery_fee;
+	return;
+}
 	 
-	void modify_details() override
+void DeliveryDetails::modify_details() 
+{
+	bool is_break_while = false;
+	int option_num;
+	while (1)
 	{
-		bool is_break_while = false;
-		int option_num;
-		while (1)
+		print_options();
+		cin >> option_num;
+		switch (option_num)
 		{
-			print_options();
-			cin >> option_num;
-			switch (option_num)
-			{
-			case 1:
-				cout << "delivery_fee를 변경합니다.\n";
-				cout << "변경할 delivery_fee를 입력하세요 : ";
-				cin >> delivery_fee;
-				cout << "delivery_fee가 " << delivery_fee << "로 변경되었습니다.\n";
-				break;
-			case 2:
-				cout << "lead_time을 변경합니다.\n";
-				cout << "변경할 lead_time를 입력하세요 : ";
-				cin >> lead_time;
-				cout << "lead_time이 " << lead_time << "로 변경되었습니다.\n";
-				break;
+		case 1:
+			cout << "delivery_fee를 변경합니다.\n";
+			cout << "변경할 delivery_fee를 입력하세요 : ";
+			cin >> delivery_fee;
+			cout << "delivery_fee가 " << delivery_fee << "로 변경되었습니다.\n";
+			break;
 
-			default :
-				is_break_while = true;
-				break;
-			}
-			if (is_break_while)
-			{
-				cout << "내용 수정을 종료합니다\n";
-				break;
-			}
+		default :
+			is_break_while = true;
+			break;
 		}
-		return;
+		if (is_break_while)
+		{
+			cout << "내용 수정을 종료합니다\n";
+			break;
+		}
 	}
+	return;
+}
 
-	void display_details() const override
-	{
-		cout << "delivery_fee : " << delivery_fee << endl;
-		cout << "lead_time : " << lead_time << endl;
-		return;
-	}
-};
+void DeliveryDetails::display_details() const 
+{
+	cout << "delivery_fee : " << delivery_fee << endl;
+	return;
+}

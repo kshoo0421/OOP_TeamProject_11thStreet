@@ -1,93 +1,63 @@
 #include "Buyer.h"
 using namespace std;
 
-class Buyer : public User
+void Buyer::add_new_address()
 {
-private:
-	vector<Address> addresses;
-	vector<unsigned int> its_order_index_list;
-	vector<Coupon> its_coupon_list;
-public:
-	void add_new_address()
+	static int count = 0;
+	if (count == 3)
 	{
-		static int count = 0;
-		if (count == 3)
-		{
-			cout << "이미 주소가 다 차서 추가할 수 없습니다.\n";
-			return;
-		}
-		Address new_address;
-		new_address.init_address();
-		addresses.emplace_back(new_address);
-		count++;
-		cout << "주소가 추가되었습니다.\n";
+		cout << "이미 주소가 다 차서 추가할 수 없습니다.\n";
 		return;
 	}
+	Address new_address;
+	new_address.init_address();
+	addresses.emplace_back(new_address);
+	count++;
+	cout << "주소가 추가되었습니다.\n";
+	return;
+}
 
-	void delete_address()
+void Buyer::delete_address()
+{
+	int input;
+	cout << "삭제할 주소를 선택하세요\n";
+	vector<Address>::iterator iterator = addresses.begin();
+	for (; iterator < addresses.end(); iterator++)
 	{
-		int input;
-		cout << "삭제할 주소를 선택하세요\n";
-		vector<Address>::iterator iterator = addresses.begin();
-		for (; iterator < addresses.end(); iterator++)
-		{
-			cout << "- " << iterator->get_address_name() << " : " << iterator->get_address_name() << endl;
-		}
-		cin >> input;
-		input -= 1;
-		if (input <= addresses.size())
-		{
-			addresses.erase(addresses.begin() + input);
-			cout << "주소가 삭제되었습니다.\n";
-		}
-		cout << "주소 삭제를 종료합니다.\n";
-		return;
+		cout << "- " << iterator->get_address_name() << " : " << iterator->get_address_name() << endl;
 	}
+	cin >> input;
+	input -= 1;
+	if (input <= addresses.size())
+	{
+		addresses.erase(addresses.begin() + input);
+		cout << "주소가 삭제되었습니다.\n";
+	}
+	cout << "주소 삭제를 종료합니다.\n";
+	return;
+}
 
-	void display_addresses() const
+void Buyer::display_addresses() const
+{
+	for (int i = 0; i < addresses.size(); i++)
 	{
-		for (int i = 0; i < addresses.size(); i++)
-		{
-			cout << i + 1 << "번째 주소" << endl;
-			cout << "address_name : " << addresses[i].get_address_name() << endl;
-			cout << "name : " << addresses[i].get_name() << endl;
-			cout << "address : " << addresses[i].get_address() << endl;
-			cout << "phone_number : " << addresses[i].get_phone_number() << endl << endl;
-		}
-		cout << "주소 출력 종료" << endl;
-		return;
+		cout << i + 1 << "번째 주소" << endl;
+		cout << "address_name : " << addresses[i].get_address_name() << endl;
+		cout << "name : " << addresses[i].get_name() << endl;
+		cout << "address : " << addresses[i].get_address() << endl;
+		cout << "phone_number : " << addresses[i].get_phone_number() << endl << endl;
 	}
+	cout << "주소 출력 종료" << endl;
+	return;
+}
 
-	std::string get_address(const unsigned int& order_id) const
-	{
-		return addresses[order_id].get_address();
-	}
+string Buyer::get_address(const unsigned int& order_id) const
+{
+	return addresses[order_id].get_address();
+}
 
-	void add_order_list(const unsigned int& order_id)
-	{
-		its_order_index_list.emplace_back(order_id);
-		return;
-	}
-
-	void add_coupon(const Coupon& new_coupon)
-	{
-		its_coupon_list.emplace_back(new_coupon);
-		return;
-	}
-
-	void delete_coupon(const unsigned int& coupon_id)
-	{
-		vector<Coupon>::iterator iterator = its_coupon_list.begin();
-		for (; iterator < its_coupon_list.end(); iterator++)
-		{
-			if (iterator->get_coupon_id() == coupon_id)
-			{
-				its_coupon_list.erase(iterator);
-				cout << "쿠폰 삭제가 완료되었습니다." << endl;
-				return;
-			}
-		}
-		cout << "삭제할 쿠폰을 찾지 못했습니다." << endl;
-		return;
-	}
-};
+void Buyer::add_order_list(const unsigned int& order_id)
+{
+	its_order_index_list.emplace_back(order_id);
+	return;
+}

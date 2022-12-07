@@ -2,13 +2,19 @@
 #include <iostream>
 #include <vector>
 #include "Product.h"
-
-enum class MainCategory { NONE, FASHION, BEAUTY, FOOD, DIGITAL, LIFE };
+#include "MainCategory.h"
 
 static class CategoryManager
 {
-public :
+private:
+	std::vector<Product> fashion_list;
+	std::vector<Product> beauty_list;
+	std::vector<Product> food_list;
+	std::vector<Product> digital_list;
+	std::vector<Product> life_list;
+
+public:
 	void display_categories() const;
-	MainCategory choose_main_category() const;
-	std::string main_category_to_string(const MainCategory& main_category) const;
+	enum MainCategory choose_main_category() const;
+	std::string main_category_to_string(const enum MainCategory& main_category) const;
 };

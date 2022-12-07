@@ -17,14 +17,14 @@ private :
 	DeliveryDetails delivery_details;
 	ProductDetails description;
 public :
+	Product();
+
 	void set_product_name();
 	std::string get_product_name() const;
-	MainCategory get_category() const;
+	enum MainCategory get_category() const;
 
 	// Buyer- 인터페이스 내용
 	void display_products_details() const override;
-	std::string get_lead_time() const override;
-	unsigned int get_free_delivery_amount() const override;
 	unsigned int get_delivery_fee() const override;
 	unsigned int get_main_price() override;
 
