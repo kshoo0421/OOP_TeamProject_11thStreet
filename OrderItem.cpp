@@ -4,20 +4,17 @@ using namespace std;
 class OrderItem
 {
 private:
-	std::string product_name;
+	Product product;
 	unsigned int quantity;
-	unsigned int price;
-	unsigned int applied_coupon_id;
-	unsigned int couponed_price;
+	unsigned int total_price;
 public:
-	OrderItem()
+	OrderItem(const Product& input) : product(input)
+	{ }
+	
+	void set_product(const Product& input)
 	{
-
-	}
-
-	~OrderItem()
-	{
-
+		product = input;
+		return;
 	}
 
 	void set_quantity()
@@ -27,23 +24,9 @@ public:
 		return;
 	}
 
-	/*
-	void set_couponed_price()
+	void set_price()
 	{
-		cout << "쿠폰의 할인 가격을 입력해주세요" << endl;
-		cin >> couponed_price;
-	}
-	*/
-
-	void set_product_name(const std::string name)
-	{
-		product_name = name;
-		return;
-	}
-
-	void set_price(const unsigned int & product_price)
-	{
-		price = product_price;
+		total_price = product.get_main_price() * quantity;
 		return;
 	}
 
@@ -54,29 +37,19 @@ public:
 	
 	unsigned int get_price() const
 	{
-		return price;
+		return total_price;
 	}
 
-
-	/*
-	unsigned int get_applied_coupon_id() const
+	std::string get_product_name() const
 	{
-		return applied_coupon_id;
+		return product.get_product_name();
 	}
-
-	unsigned int get_couponed_price() const // 변경
-	{
-		return couponed_price;
-	}
-	*/
 
 	void display_order_item() const
 	{
-		cout << "제품 이름 :" << option_string << endl;
+		cout << "제품 이름 :" << product.get_product_name() << endl;
 		cout << "주문 수량 :" << quantity << endl;
-		cout << "제품 가격 :" << price << endl;
-
+		cout << "제품 총 가격 :" << total_price << endl;
+		return;
 	}
-
-	
 };

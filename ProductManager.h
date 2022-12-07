@@ -20,5 +20,6 @@ public :
 	void delete_product();
 	void display_products_in_category();
 	void display_orders_by_seller_id(const unsigned int& seller_id) const;
+	Product& get_product();
 	Product& get_product(const unsigned int& product_id);
 };

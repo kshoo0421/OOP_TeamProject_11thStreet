@@ -49,13 +49,13 @@ public:
 	// BuyerMallInterface
 	void display_all_products() override;
 	void request_order(Order* new_order) override;
-	void add_new_order(Order* new_order) const override;
-	void display_orders_by_buyer_id(const unsigned int& buyer_id) const override;
+	void add_new_order() override;
+	void display_orders_by_buyer_id() const override;
 	Product& get_product(const unsigned int& product_id) override;
 
-	Order* get_order(const unsigned int& order_id) override;
+	Order* get_order() override;
 	// BuyerMallInterface - BuyerInterface
 	void go_shopping() override;
-	void look_up_my_order_list(const unsigned int& buyer_id) const override;
+	void look_up_my_order_list() const override;
 	void my_information() override;
 };

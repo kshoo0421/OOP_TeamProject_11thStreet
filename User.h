@@ -17,6 +17,7 @@ protected:
 public:
 	User();
 	~User();
+	void set_id(const unsigned int& input);
 	std::string get_user_name() const;
 	unsigned int get_id() const;
 	bool compare_email(const std::string& input_email) const;

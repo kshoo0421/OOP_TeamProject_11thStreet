@@ -192,6 +192,54 @@ public:
 		cout << "항목 출력을 종료합니다." << endl << endl;
 	}
 
+	Product& get_product()
+	{
+		int input;
+		category_manager.display_categories();
+		std::cout << "상품을 볼 카테고리를 선택하세요(숫자로 입력) : ";
+		std::cin >> input;
+		switch (input)
+		{
+		case 1:
+			cout << "fashion category" << endl;
+			display_products_in_sub_category(fashion_list);
+			cout << "항목을 선택하세요(숫자로 입력) : ";
+			cin >> input;
+			return fashion_list[input - 1];
+			break;
+		case 2:
+			cout << "beauty category" << endl;
+			display_products_in_sub_category(beauty_list);
+			cout << "항목을 선택하세요(숫자로 입력) : ";
+			cin >> input;
+			return beauty_list[input - 1];
+			break;
+		case 3:
+			cout << "food category" << endl;
+			display_products_in_sub_category(food_list);
+			cout << "항목을 선택하세요(숫자로 입력) : ";
+			cin >> input;
+			return food_list[input - 1];
+			break;
+		case 4:
+			cout << "digital category" << endl;
+			display_products_in_sub_category(digital_list);
+			cout << "항목을 선택하세요(숫자로 입력) : ";
+			cin >> input;
+			return digital_list[input - 1];
+			break;
+		case 5:
+			cout << "life category" << endl;
+			display_products_in_sub_category(life_list);
+			cout << "항목을 선택하세요(숫자로 입력) : ";
+			cin >> input;
+			return life_list[input - 1];
+			break;
+		default:
+		}
+		std::cout << "상품 보기를 종료합니다." << std::endl;
+	}
+
 	Product& get_product(const unsigned int& product_id)
 	{
 		for (int i = 0; i < fashion_list.size(); i++)
@@ -226,5 +274,4 @@ public:
 
 		cout << "찾지 못했습니다." << endl;
 	}
-
 };

@@ -25,6 +25,12 @@ public:
 	User() = default;
 	~User() = default;
 
+	void set_id(const unsigned int& input)
+	{
+		user_id = input;
+		return;
+	}
+
 	std::string get_user_name() const
 	{
 		return user_name;

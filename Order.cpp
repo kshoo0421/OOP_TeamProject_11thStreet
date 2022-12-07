@@ -18,15 +18,7 @@ private:
 	unsigned int total_price;
 	Status status;
 public:
-	Order()
-	{
-
-	}
-
-	~Order()
-	{
-
-	}
+	Order(const unsigned int& input) : order_id(input) { }
 
 	// Buyer- 
 	void add_order_item(const OrderItem& new_item) override
@@ -88,33 +80,6 @@ public:
 			total_product_price += iterator->get_price() * iterator->get_quantity();
 	}
 
-	/*
-	void request_order_refund() override
-	{
-		unsigned int input;
-		display_order_details();
-		cout << "환불하고 싶은 제품의 번호를 입력해주세요" << endl;
-		cin >> input;
-		vector<OrderItem>::iterator iterator = order_item_list.begin();
-		while (input > order_item_list.size())
-		{
-				cout << "번호를 다시 입력해주세요" << endl;
-				cin >> input;
-		}
-		order_item_list[input - 1].display_order_item();
-		cout << "위 제품에 대해서 환불 진행하겠습니다." << endl;
-		process_order();
-		cout << "." << endl;
-		Sleep(1000);
-		cout << "." << endl;
-		Sleep(1000);
-		cout << "." << endl;
-		Sleep(1000);
-		cout << "환불이 완료되었습니다." << endl;
-
-	}
-	*/
-
 	// Seller- 
 	void set_status() override
 	{
@@ -135,10 +100,6 @@ public:
 		cout << "실제 배송기간을 입력해주세요" << endl;
 		cin >> actual_arrival_date;
 		return;
-	}
-	void display_order_seller() const override
-	{
-		///?? 어떤식으로 표시해야되는지 코멘트 주시면 감사하겠습니다.
 	}
 
 	// Search-

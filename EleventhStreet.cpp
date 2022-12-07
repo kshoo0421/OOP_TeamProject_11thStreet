@@ -7,6 +7,7 @@ private:
 	ProductManager product_manager;
 
 	User cur_user;
+	int cur_user_index = 0;
 	bool is_logined = false;
 	bool is_user_seller = false;
 	Seller seller_list[3];
@@ -59,7 +60,40 @@ private:
 
 	void use_buyer_interface()
 	{
+		int input;
+		while (1)
+		{
+			display_buyer_interface();
+			cin >> input;
+			switch (input)
+			{
+			case 1:
+				go_shopping();
+				break;
+			case 2:
+				look_up_my_order_list();
+				break;
+			case 3:
+				my_information();
+				break;
+			case 4:
+				log_out();
+				cout << "로그아웃 되었습니다." << endl;
+				break;
+			default:
+				break;
+			}
+		}
+		return;
+	}
 
+	void display_shopping_options()
+	{
+		cout << "쇼핑하기" << endl;
+		cout << "1. 전체 상품 보기" << endl;
+		cout << "2. 상품 장바구니 담기" << endl;
+		cout << "3. 주문하기" << endl;
+		return;
 	}
 
 	void display_buyer_interface()
@@ -142,9 +176,20 @@ private:
 		cout << "로그인에 실패했습니다." << endl;
 	}
 
+	void set_ids_and_orders()
+	{
+		for (int i = 0; i < 3; i++)
+		{
+			seller_list[i].set_id(1001 + i);
+			buyer_list[i].set_id(2001 + i);
+			order_list.emplace_back(&Order((unsigned int)3001 + i));
+		}
+	}
+
 public:
 	EleventhStreet()
 	{
+		set_ids_and_orders();
 		use_eleventh_street();
 	}
 
@@ -224,30 +269,43 @@ public:
 
 	void request_order(Order* new_order) override
 	{
-		cout << "제품 주문" << endl;
-		add_new_order(new_order);
+		int input = 0;
+		while (1)
+		{
+			cout << "" << endl;
+			cout << "1." << endl;
+			cout << "2." << endl;
+			cin >> input;
+			switch (input)
+			{
+			case 1:
+				add_new_order();
+			case 2:
+				cout << "" << endl;
+				return;
+			}
+		}
 		return;
 	}
 
-	void add_new_order(Order* new_order) const override // 매개변수 추가
+	void add_new_order() override // 매개변수 추가
 	{
-		Product newProduct;
-		string temp = newProduct.get_product_name();
-		OrderItem newOrderitem;
-		newOrderitem.set_product_name(temp);
-		cout << "선택하신 제품 :" << temp << endl;
-		cout << "제품 가격 :" << newProduct.get_main_price() << endl;
-		newOrderitem.set_price(newProduct.get_main_price());
-		newOrderitem.set_quantity();
-
-		new_order->add_order_item(newOrderitem);
+		OrderItem temp_item(product_manager.get_product());
+		temp_item.set_quantity();
+		temp_item.set_price();
+		order_list[cur_user_index]->add_order_item(temp_item);
+		cout << "선택하신 제품 :" << temp_item.get_product_name() << endl;
+		cout << "제품 가격 : " << temp_item.get_price() / temp_item.get_quantity() << endl;
+		cout << "제품 갯수 : " << temp_item.get_quantity() << endl;
+		cout << "제품 총 가격 :" << temp_item.get_price() << endl << endl;
+		return;
 	}
 
-	void display_orders_by_buyer_id(const unsigned int& buyer_id) const override
+	void display_orders_by_buyer_id() const override
 	{
 		
 		cout << "주문 상품 내역" << endl;
-		order_list[buyer_id]->display_order();
+		order_list[cur_user_index]->display_order();
 		
 	}
 
@@ -256,22 +314,46 @@ public:
 		return product_manager.get_product(product_id);
 	}
 
-	Order* get_order(const unsigned int& order_id) override
+	Order* get_order() override
 	{
-		return order_list[order_id];
+		return order_list[cur_user_index];
 	}
 
 	// BuyerMallInterface - BuyerInterface
 	void go_shopping() override
 	{
-
+		bool is_break = false;
+		int input;
+		while (1)
+		{
+			display_shopping_options();
+			cin >> input;
+			switch (input)
+			{
+			case 1:
+				display_all_products();
+				break;
+			case 2:
+				add_new_order();
+				break;
+			case 3:
+				request_order(order_list[cur_user_index]);
+				break;
+			default:
+				is_break = true;
+				break;
+			}
+			if (is_break) break;
+		}
+		cout << "쇼핑하기를 종료합니다.." << endl;
+		return;
 	}
 
-	void look_up_my_order_list(const unsigned int& buyer_id) const override
+	void look_up_my_order_list() const override
 	{
 		cout << "내 장바구니 목록" << endl;
-		cout << "구매자 :" << buyer_id + 1 << endl;
-		order_list[buyer_id]->display_order_details();
+		cout << "구매자 :" << buyer_list[cur_user_index].get_user_name() << endl;
+		order_list[cur_user_index]->display_order_details();
 		return;
 	}
 
