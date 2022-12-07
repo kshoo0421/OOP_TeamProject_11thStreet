@@ -1,11 +1,12 @@
 #pragma once
 #include <vector>
+#include <windows.h>
+#include <ctime>
 #include "BuyerOrderInterface.h"
 #include "SellerOrderInterface.h"
 #include "SearchOrderInterface.h"
 #include "OrderItem.h"
 #include "Address.h"
-#include <windows.h>
 
 enum Status
 {
@@ -36,6 +37,7 @@ private :
 	Status status;
 public :
 	Order(const unsigned int& input) : order_id(input) { };
+	void clear_order_item_list();
 
 	// Buyer- 
 	void add_order_item(const OrderItem& new_item) override;

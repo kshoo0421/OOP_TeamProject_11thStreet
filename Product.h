@@ -6,6 +6,8 @@
 #include "ProductSearchInterface.h"
 #include "ProductDetails.h"
 
+static unsigned int product_index = 1001;
+
 class Product : public BuyerProductInterface, public SellerProductInterface, public ProductSearchInterface
 {
 private :
@@ -17,6 +19,7 @@ private :
 	void init_product_set();
 public :
 	Product();
+	Product(unsigned int seller_id_input);
 	~Product();
 
 	std::string get_product_name() const;

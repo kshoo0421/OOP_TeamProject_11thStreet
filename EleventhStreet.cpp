@@ -6,9 +6,12 @@ void EleventhStreet::use_eleventh_street()
 	while (is_logined == false)
 	{
 		log_in();
-		cout << "로그인을 종료하시겠습니까?(1 : 예, 그 외 : 아니요)" << endl;
-		cin >> input;
-		if (input == 1) break;
+		if (is_logined == false)
+		{
+			cout << endl << "로그인을 종료하시겠습니까?(1 : 예, 그 외 : 아니요)" << endl;
+			cin >> input;
+			if (input == 1) break;
+		}
 	}
 	if (is_logined)
 	{
@@ -49,7 +52,7 @@ void EleventhStreet::use_seller_interface()
 
 void EleventhStreet::display_seller_interface()
 {
-	cout << "이용 가능 목록" << endl;
+	cout << endl << "이용 가능 목록" << endl;
 	cout << "1. 상품 등록하기" << endl;
 	cout << "2. 판매자 정보 보기" << endl;
 	cout << "3. 로그아웃 하기" << endl << endl;
@@ -58,6 +61,7 @@ void EleventhStreet::display_seller_interface()
 
 void EleventhStreet::use_buyer_interface()
 {
+	bool is_break = false;
 	int input;
 	while (1)
 	{
@@ -76,18 +80,20 @@ void EleventhStreet::use_buyer_interface()
 			break;
 		case 4:
 			log_out();
+			is_break = true;
 			cout << "로그아웃 되었습니다." << endl;
 			break;
 		default:
 			break;
 		}
+		if (is_break) break;
 	}
 	return;
 }
 
 void EleventhStreet::display_shopping_options()
 {
-	cout << "쇼핑하기" << endl;
+	cout << endl << "쇼핑하기" << endl;
 	cout << "1. 전체 상품 보기" << endl;
 	cout << "2. 상품 장바구니 담기" << endl;
 	cout << "3. 주문하기" << endl;
@@ -96,10 +102,11 @@ void EleventhStreet::display_shopping_options()
 
 void EleventhStreet::display_buyer_interface()
 {
-	cout << "이용 가능 목록" << endl;
+	cout << endl << "이용 가능 목록" << endl;
 	cout << "1. 쇼핑하기" << endl;
 	cout << "2. 장바구니 보기" << endl;
-	cout << "3. 내 정보 보기" << endl << endl;
+	cout << "3. 내 정보 보기" << endl;
+	cout << "4. 로그아웃" << endl << endl;
 	return;
 }
 
@@ -110,10 +117,23 @@ void EleventhStreet::log_in()
 	cout << "1. 구매자 계정" << endl;
 	cout << "2. 판매자 계정" << endl;
 	cin >> input;
-	if (input == 1) cur_user = buyer_log_in();
-	else if (input == 2) cur_user = seller_log_in();
-	else cout << "선택되지 않았습니다." << endl;
-	cout << "로그인을 종료합니다." << endl;
+	if (input == 1)
+	{
+		cur_user = buyer_log_in();
+		cout << "로그인이 완료되었습니다." << endl;
+	}
+
+	else if (input == 2)
+	{
+		cur_user = seller_log_in();
+		cout << "로그인이 완료되었습니다." << endl;
+	}
+	else
+	{
+		cout << "선택되지 않았습니다." << endl;
+		cout << "로그인을 종료합니다." << endl;
+	}
+	return;
 }
 
 void EleventhStreet::log_out()
@@ -136,14 +156,17 @@ Seller& EleventhStreet::seller_log_in()
 	case 1:
 		is_logined = true;
 		is_user_seller = true;
+		cout << "로그인에 성공했습니다. 계정 : 판매자1" << endl << endl;
 		return seller_list[0];
 	case 2:
 		is_logined = true;
 		is_user_seller = true;
+		cout << "로그인에 성공했습니다. 계정 : 판매자2" << endl << endl;
 		return seller_list[1];
 	case 3:
 		is_logined = true;
 		is_user_seller = true;
+		cout << "로그인에 성공했습니다. 계정 : 판매자3" << endl << endl;
 		return seller_list[2];
 	default: break;
 	}
@@ -163,12 +186,15 @@ Buyer& EleventhStreet::buyer_log_in()
 	{
 	case 1:
 		is_logined = true;
+		cout << "로그인에 성공했습니다. 계정 : 구매자1" << endl << endl;
 		return buyer_list[0];
 	case 2:
 		is_logined = true;
+		cout << "로그인에 성공했습니다. 계정 : 구매자2" << endl << endl;
 		return buyer_list[1];
 	case 3:
 		is_logined = true;
+		cout << "로그인에 성공했습니다. 계정 : 구매자3" << endl << endl;
 		return buyer_list[2];
 	default: break;
 	}
@@ -186,7 +212,6 @@ void EleventhStreet::set_ids_and_orders()
 	}
 	return;
 }
-
 
 // SellerMallInterface
 void EleventhStreet::display_categories() const
@@ -209,7 +234,7 @@ Order EleventhStreet::get_order(const unsigned int& order_id) const
 
 Product EleventhStreet::register_new_product() const
 {
-	Product new_product;
+	Product new_product(cur_user.get_id());
 	return new_product;
 }
 
@@ -223,6 +248,7 @@ void EleventhStreet::register_product()
 		cout << "1. 새 상품 등록하기" << endl;
 		cout << "2. 이미 등록된 상품 확인하기" << endl;
 		cout << "3. 등록된 상품 삭제하기" << endl;
+		cout << "그 외 : 등록 종료" << endl << endl;
 		cin >> input;
 		switch (input)
 		{
@@ -252,20 +278,21 @@ void EleventhStreet::display_all_products()
 void EleventhStreet::request_order(Order new_order) 
 {
 	int input = 0;
-	while (1)
+	cout << "현재 장바구니 항목입니다." << endl;
+	order_list[cur_user_index].set_total_product_price();
+	order_list[cur_user_index].set_total_price();
+	order_list[cur_user_index].set_delivery_price();
+	order_list[cur_user_index].display_order();
+	cout << "결제하시겠습니까?(1 : 예, 그 외 : 아니요) : ";
+	cin >> input;
+	if (input == 1)
 	{
-		cout << "장바구니" << endl;
-		cout << "1. 장바구니에 추가" << endl;
-		cout << "2. 장바구니 종료" << endl;
-		cin >> input;
-		switch (input)
-		{
-		case 1:
-			add_new_order();
-		case 2:
-		default :
-			cout << "장바구니를 종료합니다." << endl;
-		}
+		cout << "결제가 완료되었습니다." << endl;
+		order_list[cur_user_index].clear_order_item_list();
+	}
+	else
+	{
+		cout << "결제가 취소되었습니다." << endl;
 	}
 	return;
 }
@@ -286,7 +313,6 @@ void EleventhStreet::add_new_order() // 매개변수 추가
 
 void EleventhStreet::display_orders_by_buyer_id() const
 {
-		
 	cout << "주문 상품 내역" << endl;
 	order_list[cur_user_index].display_order();
 	return;

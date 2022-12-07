@@ -6,10 +6,12 @@ Product::Product()
 	init_product_set();
 }
 
-Product::~Product()
+Product::Product(unsigned int seller_id_input) : seller_id(seller_id_input)
 {
-	delete description;
+	init_product_set();
 }
+
+Product::~Product() = default;
 
 string Product::get_product_name() const
 {
@@ -38,6 +40,7 @@ void Product::init_product_set()
 {
 	description = new ProductDetails();
 	product_name = description->get_product_name();
+	product_id = product_index++;
 }
 
 void Product::modify_product()
