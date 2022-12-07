@@ -10,14 +10,16 @@
 class Product : public BuyerProductInterface, public SellerProductInterface, public ProductSearchInterface
 {
 private :
-	CategoryManager category_manager;
 	std::string product_name;
 	unsigned int product_id;
 	unsigned int seller_id;
-	DeliveryDetails delivery_details;
-	ProductDetails description;
+	class DeliveryDetails* delivery_details;
+	class ProductDetails* description;
+	class CategoryManager* category_manager;
+
 public :
 	Product();
+	~Product();
 
 	void set_product_name();
 	std::string get_product_name() const;

@@ -1,6 +1,5 @@
 #include "ProductManager.h"
 using namespace std;
-enum MainCategory { NONE, FASHION, BEAUTY, FOOD, DIGITAL, LIFE };
 
 void ProductManager::display_products_in_sub_category(std::vector<Product> product_list) const
 {
@@ -158,6 +157,7 @@ void ProductManager::display_products_in_category()
 		display_products_in_sub_category(life_list);
 		break;
 	default :
+		break;
 	}
 	std::cout << "상품 보기를 종료합니다." << std::endl;
 }
@@ -227,6 +227,7 @@ Product& ProductManager::get_product()
 		return life_list[input - 1];
 		break;
 	default:
+		break;
 	}
 	std::cout << "상품 보기를 종료합니다." << std::endl;
 }

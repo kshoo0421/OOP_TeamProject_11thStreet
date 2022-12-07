@@ -1,4 +1,5 @@
 #include "Seller.h"
+using namespace std;
 
 string Seller::get_return_address() const
 {

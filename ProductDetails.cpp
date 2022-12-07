@@ -1,6 +1,16 @@
 #include "ProductDetails.h"
 using namespace std;
 
+ProductDetails::ProductDetails()
+{
+	category_manager = new CategoryManager();
+}
+
+ProductDetails::~ProductDetails()
+{
+	delete category_manager;
+}
+
 void ProductDetails::print_options() const // 메뉴 선택 시 표시할 선택지들
 {
 	cout << "설정할 항목을 선택하세요.\n";
@@ -16,11 +26,10 @@ unsigned int ProductDetails::get_main_price() const
 	return main_price;
 }
 	
-MainCategory ProductDetails::get_category() const
+enum MainCategory ProductDetails::get_category() const
 {
 	return main_category;
 }
-
 
 void ProductDetails::end_registeration()	// 첫 확정일자
 {
@@ -53,7 +62,7 @@ void ProductDetails::init_details()
 	cin >> main_price;
 
 	cout << "category를 설정하세요 : ";
-	main_category = category_manager.choose_main_category();
+	main_category = category_manager->choose_main_category();
 	return;
 }
 
@@ -85,7 +94,7 @@ void ProductDetails::modify_details()
 			break;
 		case 3:
 			cout << "category를 변경합니다.\n";
-			main_category = category_manager.choose_main_category();
+			main_category = category_manager->choose_main_category();
 			break;
 		default:
 			is_break_while = true;
@@ -108,6 +117,6 @@ void ProductDetails::display_details() const	// 세부 내용 표시
 		<< posted_date->tm_mday << "일\n";
 	cout << "effective_date : " << effective_date->tm_year << "년 " << effective_date->tm_mon << "월 "
 		<< effective_date->tm_mday << "일\n";
-	cout << "category : " << category_manager.main_category_to_string(main_category) << endl;
+	cout << "category : " << category_manager->main_category_to_string(main_category) << endl;
 	return;
 }

@@ -202,11 +202,6 @@ Order EleventhStreet::get_order(const unsigned int& order_id) const
 	return order_list[order_id];
 }
 
-Product& EleventhStreet::get_product(const unsigned int& product_id)
-{
-	return product_manager.get_product(product_id);
-}
-
 Product EleventhStreet::register_new_product() const
 {
 	Product new_product;

@@ -1,4 +1,5 @@
 #include "User.h"
+using namespace std;
 
 void User::print_options()
 {
