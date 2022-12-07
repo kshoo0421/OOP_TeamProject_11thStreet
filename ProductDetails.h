@@ -13,7 +13,7 @@ private:
 	unsigned int main_price;	// 기본 가격
 	std::string product_name;	// 상품명
 
-	enum class MainCategory main_category;	// 메인 카테고리
+	MainCategory main_category;	// 메인 카테고리
 
 	const tm* posted_date;	// 상품 등록일
 	tm* effective_date;	// 게시 유효일
@@ -30,7 +30,7 @@ public:
 	ProductDetails();
 	std::string get_product_name() const;
 	unsigned int get_main_price() const;
-	enum MainCategory get_category() const;
+	MainCategory get_category() const;
 
 	// DetailsInterface Interface
 	void modify_details() override;

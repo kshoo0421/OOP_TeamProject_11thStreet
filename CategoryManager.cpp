@@ -12,7 +12,7 @@ void CategoryManager::display_categories() const
 	return;
 }
 
-enum class MainCategory CategoryManager::choose_main_category() const
+MainCategory CategoryManager::choose_main_category() const
 {
 	int input;
 	display_categories();

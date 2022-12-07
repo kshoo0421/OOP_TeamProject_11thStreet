@@ -1,12 +1,12 @@
 #pragma once
 #include <vector>
 // components
+#include "CategoryManager.h"
 #include "Product.h"
 #include "Seller.h"
 #include "Buyer.h"
 #include "Order.h"
 #include "User.h"
-#include "CategoryManager.h"
 #include "ProductManager.h"
 
 // interfaces

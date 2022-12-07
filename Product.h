@@ -20,7 +20,7 @@ public :
 	~Product();
 
 	std::string get_product_name() const;
-	enum MainCategory get_category() const;
+	enum class MainCategory get_category() const;
 
 	// Buyer- 인터페이스 내용
 	unsigned int get_main_price() override;

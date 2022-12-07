@@ -16,7 +16,7 @@ string Product::get_product_name() const
 	return product_name;
 }
 
-enum class MainCategory Product::get_category() const
+MainCategory Product::get_category() const
 {
 	return description->get_category();
 }

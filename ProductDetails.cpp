@@ -78,7 +78,7 @@ unsigned int ProductDetails::get_main_price() const
 	return main_price;
 }
 	
-enum class MainCategory ProductDetails::get_category() const
+MainCategory ProductDetails::get_category() const
 {
 	return main_category;
 }
