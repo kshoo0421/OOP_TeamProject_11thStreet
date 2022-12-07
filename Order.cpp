@@ -25,7 +25,7 @@ public:
 
 	~Order()
 	{
-	
+
 	}
 
 	// Buyer- 
@@ -45,7 +45,7 @@ public:
 		}
 		for (int i = 0; i < order_item_list.size(); i++)
 		{
-			cout << i +1 << "번 상품" << endl;
+			cout << i + 1 << "번 상품" << endl;
 			order_item_list[i].display_order_item();
 		}
 		return;
@@ -99,7 +99,7 @@ public:
 		while (input > order_item_list.size())
 		{
 				cout << "번호를 다시 입력해주세요" << endl;
-				cin >> input;	
+				cin >> input;
 		}
 		order_item_list[input - 1].display_order_item();
 		cout << "위 제품에 대해서 환불 진행하겠습니다." << endl;
@@ -138,16 +138,7 @@ public:
 	}
 	void display_order_seller() const override
 	{
-		///
-		///
-		/// 
-		/// 
-		/// 
-	}
-
-	void process_order() override
-	{
-
+		///?? 어떤식으로 표시해야되는지 코멘트 주시면 감사하겠습니다.
 	}
 
 	// Search-
@@ -155,3 +146,4 @@ public:
 	{
 		return order_id;
 	}
+};

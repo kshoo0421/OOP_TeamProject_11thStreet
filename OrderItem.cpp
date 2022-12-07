@@ -4,7 +4,7 @@ using namespace std;
 class OrderItem
 {
 private:
-	std::string option_string;
+	std::string product_name;
 	unsigned int quantity;
 	unsigned int price;
 	unsigned int applied_coupon_id;
@@ -35,10 +35,16 @@ public:
 	}
 	*/
 
-	void set_price()
+	void set_product_name(const std::string name)
 	{
-		cout << "제품의 가격을 입력해주세요" << endl;
-		cin >> price;
+		product_name = name;
+		return;
+	}
+
+	void set_price(const unsigned int & product_price)
+	{
+		price = product_price;
+		return;
 	}
 
 	unsigned int get_quantity() const
@@ -66,7 +72,7 @@ public:
 
 	void display_order_item() const
 	{
-		cout << "주문 옵션 :" << option_string << endl;
+		cout << "제품 이름 :" << option_string << endl;
 		cout << "주문 수량 :" << quantity << endl;
 		cout << "제품 가격 :" << price << endl;
 

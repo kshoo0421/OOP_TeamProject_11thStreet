@@ -49,7 +49,7 @@ public:
 	// BuyerMallInterface
 	void display_all_products() override;
 	void request_order(Order* new_order) override;
-	void add_new_order() const override;
+	void add_new_order(Order* new_order) const override;
 	void display_orders_by_buyer_id(const unsigned int& buyer_id) const override;
 	Product& get_product(const unsigned int& product_id) override;
 
