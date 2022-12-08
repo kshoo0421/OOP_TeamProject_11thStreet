@@ -305,9 +305,9 @@ void EleventhStreet::add_new_order() // 매개변수 추가
 	temp_item.set_price(temp_product.get_main_price());
 	order_list[cur_user_index].add_order_item(temp_item);
 	cout << "선택하신 제품 :" << temp_item.get_product_name() << endl;
-	cout << "제품 가격 : " << temp_item.get_price() / temp_item.get_quantity() << endl;
+	cout << "제품 가격 : " << temp_item.get_price() << endl;
 	cout << "제품 갯수 : " << temp_item.get_quantity() << endl;
-	cout << "제품 총 가격 :" << temp_item.get_price() << endl << endl;
+	cout << "제품 총 가격 :" << temp_item.get_price() * temp_item.get_quantity() << endl << endl;
 	return;
 }
 
