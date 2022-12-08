@@ -1,5 +1,6 @@
 #pragma once
 #include <ctime>
+#include <string>
 #include "Product.h"
 #include "CategoryManager.h"
 #include "DetailsInterface.h"

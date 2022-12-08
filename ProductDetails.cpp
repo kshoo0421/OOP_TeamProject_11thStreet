@@ -1,11 +1,11 @@
 #include "ProductDetails.h"
 using namespace std;
 
-// private
+// private)
 void ProductDetails::set_product_name()
 {
 	cout << "상품명을 설정하세요 : ";
-	cin >> product_name;
+	getline(cin, product_name);
 	return;
 }
 
