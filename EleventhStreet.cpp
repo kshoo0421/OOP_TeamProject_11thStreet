@@ -58,6 +58,51 @@ void EleventhStreet::display_seller_interface()
 	cout << "3. 로그아웃 하기" << endl << endl;
 	return;
 }
+void EleventhStreet::buyer_address_control()
+{
+	int input;
+	bool is_break = false;
+	while (1)
+	{
+		cout << "주소 관리" << endl;
+		cout << "1. 내 주소 보기" << endl;
+		cout << "2. 주소 추가" << endl;
+		cout << "3. 주소 삭제" << endl;
+		cout << "4. 기본 주소지 등록" << endl;
+		cout << "그 외 : 나가기" << endl;
+		cout << "항목 선택(숫자) : " << endl;
+		cin >> input;
+		switch (input)
+		{
+		case 1:
+			buyer_list[cur_user_index].display_addresses();
+			break;
+		case 2:
+			buyer_list[cur_user_index].add_new_address();
+			break;
+		case 3:
+			buyer_list[cur_user_index].delete_address();
+			break;
+		case 4 :
+			buyer_list[cur_user_index].display_addresses();
+			cout << "기본 주소지로 등록할 주소를 선택하세요(숫자) : ";
+			cin >> input;
+			order_list[cur_user_index].set_buyer_address(buyer_list[cur_user_index].get_full_address(input-1));
+			cout << "기본주소지로 등록되었습니다." << endl;
+			break;
+		default:
+			is_break = true;
+			break;
+		}
+		if (is_break)
+		{
+			cout << "주소 관리를 종료합니다." << endl << endl;
+			break;
+		}
+	}
+	return;
+}
+
 
 void EleventhStreet::use_buyer_interface()
 {
@@ -79,6 +124,9 @@ void EleventhStreet::use_buyer_interface()
 			my_information();
 			break;
 		case 4:
+			buyer_address_control();
+			break;
+		case 5 :
 			log_out();
 			is_break = true;
 			cout << "로그아웃 되었습니다." << endl;
@@ -106,7 +154,8 @@ void EleventhStreet::display_buyer_interface()
 	cout << "1. 쇼핑하기" << endl;
 	cout << "2. 장바구니 보기" << endl;
 	cout << "3. 내 정보 보기" << endl;
-	cout << "4. 로그아웃" << endl << endl;
+	cout << "4. 주소 관리하기" << endl;
+	cout << "5. 로그아웃" << endl << endl;
 	return;
 }
 
@@ -349,7 +398,7 @@ void EleventhStreet::go_shopping()
 		}
 		if (is_break) break;
 	}
-	cout << "쇼핑하기를 종료합니다.." << endl;
+	cout << "쇼핑하기를 종료합니다." << endl;
 	return;
 }
 

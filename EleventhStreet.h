@@ -37,7 +37,7 @@ private:
 	Seller& seller_log_in();
 	Buyer& buyer_log_in();
 	void set_ids_and_orders();
-
+	void buyer_address_control();
 	Product register_new_product() const;
 
 	// SellerMallInterface

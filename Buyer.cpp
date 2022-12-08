@@ -51,6 +51,11 @@ void Buyer::display_addresses() const
 	return;
 }
 
+Address Buyer::get_full_address(const unsigned int& order_id) const
+{
+	return addresses[order_id];
+}
+
 string Buyer::get_address(const unsigned int& order_id) const
 {
 	return addresses[order_id].get_address();
