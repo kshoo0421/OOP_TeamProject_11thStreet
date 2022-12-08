@@ -280,8 +280,8 @@ void EleventhStreet::request_order(Order new_order)
 	int input = 0;
 	cout << "현재 장바구니 항목입니다." << endl;
 	order_list[cur_user_index].set_total_product_price();
-	order_list[cur_user_index].set_total_price();
 	order_list[cur_user_index].set_delivery_price();
+	order_list[cur_user_index].set_total_price();
 	order_list[cur_user_index].display_order();
 	cout << "결제하시겠습니까?(1 : 예, 그 외 : 아니요) : ";
 	cin >> input;
