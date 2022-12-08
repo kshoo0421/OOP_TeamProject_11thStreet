@@ -18,7 +18,7 @@ void OrderItem::set_quantity()
 
 void OrderItem::set_price(const unsigned int& price)
 {
-	total_price = price * quantity;
+	total_price = price;
 	return;
 }
 
