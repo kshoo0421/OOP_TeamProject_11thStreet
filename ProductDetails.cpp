@@ -5,6 +5,7 @@ using namespace std;
 void ProductDetails::set_product_name()
 {
 	cout << "상품명을 설정하세요 : ";
+	std::cin >> std::ws;
 	getline(cin, product_name);
 	return;
 }
